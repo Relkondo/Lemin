@@ -6,13 +6,13 @@
 /*   By: scoron <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/13 17:52:30 by scoron            #+#    #+#             */
-/*   Updated: 2019/02/09 17:38:51 by scoron           ###   ########.fr       */
+/*   Updated: 2020/05/09 20:53:05 by scoron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static char	*ft_putint(char *res, uintmax_t n, size_t len)
+static char	*ft_putint(char *res, unsigned long long n, size_t len)
 {
 	if (n == 0)
 		res[0] = '0';
@@ -24,11 +24,11 @@ static char	*ft_putint(char *res, uintmax_t n, size_t len)
 	return (res);
 }
 
-char		*ft_uitoa(uintmax_t n)
+char		*ft_uitoa(unsigned long long n)
 {
 	char				*res;
 	size_t				len;
-	uintmax_t			k;
+	unsigned long long	k;
 
 	len = 1;
 	k = n;

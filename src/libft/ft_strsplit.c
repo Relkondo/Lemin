@@ -6,7 +6,7 @@
 /*   By: scoron <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/13 16:23:54 by scoron            #+#    #+#             */
-/*   Updated: 2018/11/14 16:38:08 by scoron           ###   ########.fr       */
+/*   Updated: 2020/05/16 01:12:25 by scoron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ static char	*ft_spmall(char const *s, int i, char c)
 		j++;
 		i++;
 	}
+//	ft_printf("split 2 : %s, size : %d\n", s, j);
 	if (!(res = (char *)malloc((j + 1) * sizeof(char))))
 		return (0);
 	return (res);
@@ -70,8 +71,8 @@ static void	ft_spcpy(char **res, char const *s, char c)
 			i++;
 			j++;
 		}
-		if (s[i])
-			res[k][j] = 0;
+//		if (s[i])
+		res[k][j] = 0;
 	}
 }
 
@@ -79,6 +80,8 @@ char		**ft_strsplit(char const *s, char c)
 {
 	int		w;
 	char	**res;
+
+//	ft_printf("split 1 : %s\n", s);
 
 	if (s == 0)
 		return (0);

@@ -6,7 +6,7 @@
 /*   By: scoron <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/13 15:20:06 by scoron            #+#    #+#             */
-/*   Updated: 2019/02/11 17:45:08 by scoron           ###   ########.fr       */
+/*   Updated: 2020/05/03 07:11:26 by scoron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,37 +14,37 @@
 
 int		ft_printf(char *format, ...)
 {
-    t_ftp		p;
-
-    p.format = format;
-    p.retv = 0;
-    p.len_buf = 0;
-    p.buf = ft_strnew(BUF_SIZE);
-    p.fd = 1;
-    va_start(p.va, format);
-    while (*(p.format))
-    {
-        if (*(p.format) == '%' && p.format++)
-            parse_options(&p);
-        else
-            buffer(&p, 1, p.format);
-        (p.format)++;
-    }
-    va_end(p.va);
-    buffer(&p, -1, 0);
-    free(p.buf);
-    return (p.retv);
-}
-
-int		ft_dprintf(int fd, char *format, ...)
-{
-	t_ftp		p;
+	t_ftp	p;
 
 	p.format = format;
 	p.retv = 0;
 	p.len_buf = 0;
 	p.buf = ft_strnew(BUF_SIZE);
-    p.fd = fd;
+	p.fd = 1;
+	va_start(p.va, format);
+	while (*(p.format))
+	{
+		if (*(p.format) == '%' && p.format++)
+			parse_options(&p);
+		else
+			buffer(&p, 1, p.format);
+		(p.format)++;
+	}
+	va_end(p.va);
+	buffer(&p, -1, 0);
+	free(p.buf);
+	return (p.retv);
+}
+
+int		ft_dprintf(int fd, char *format, ...)
+{
+	t_ftp	p;
+
+	p.format = format;
+	p.retv = 0;
+	p.len_buf = 0;
+	p.buf = ft_strnew(BUF_SIZE);
+	p.fd = fd;
 	va_start(p.va, format);
 	while (*(p.format))
 	{

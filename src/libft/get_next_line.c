@@ -6,7 +6,7 @@
 /*   By: scoron <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/23 17:54:28 by scoron            #+#    #+#             */
-/*   Updated: 2018/12/05 21:19:39 by scoron           ###   ########.fr       */
+/*   Updated: 2020/05/03 18:56:47 by scoron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,8 @@ static t_chain	*ft_delfd(t_chain *fd_chain)
 		fd_chain = fd_chain->previous;
 	else if (fd_chain->next)
 		fd_chain = fd_chain->next;
-    	else
-        	fd_chain = NULL;
+	else
+		fd_chain = NULL;
 	tmp->previous = NULL;
 	tmp->next = NULL;
 	free(tmp);
@@ -114,7 +114,10 @@ int				get_next_line(const int fd, char **line)
 	else if (!(ft_strchr(fd_chain->res, '\n')))
 		checkread = ft_joinfree(fd_chain);
 	if (checkread < 0)
+	{
+		fd_chain = ft_delfd(fd_chain);
 		return (-1);
+	}
 	*line = ft_strcutuntil(&(fd_chain->res), '\n');
 	if (checkread == 0)
 		fd_chain = ft_delfd(fd_chain);

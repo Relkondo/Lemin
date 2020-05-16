@@ -6,13 +6,13 @@
 /*   By: scoron <scoron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/09 17:05:45 by scoron            #+#    #+#             */
-/*   Updated: 2019/02/12 16:41:09 by scoron           ###   ########.fr       */
+/*   Updated: 2020/05/09 13:54:47 by scoron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int		size_nu(t_ftp *p, intmax_t n)
+int		size_nu(t_ftp *p, long long n)
 {
 	int			size;
 	int			len;
@@ -29,7 +29,7 @@ int		size_nu(t_ftp *p, intmax_t n)
 	return (size);
 }
 
-int		size_ba(t_ftp *p, uintmax_t n, char c)
+int		size_ba(t_ftp *p, unsigned long long n, char c)
 {
 	int			size;
 	int			bs;

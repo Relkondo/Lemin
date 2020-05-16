@@ -6,7 +6,7 @@
 /*   By: scoron <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/08 08:34:59 by scoron            #+#    #+#             */
-/*   Updated: 2019/03/06 13:10:41 by scoron           ###   ########.fr       */
+/*   Updated: 2020/05/09 16:36:36 by scoron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,17 +57,17 @@ char				*ft_strncat(char *s1, const char *s2, size_t n);
 size_t				ft_strlcat(char *dst, const char *src, size_t size);
 char				*ft_strchr(const char *s, int c);
 int					ft_strchri(const char *s, int c);
-int		            exist_in(char i, char const *str);
+int					exist_in(char i, char const *str);
 char				*ft_strrchr(const char *s, int c);
 char				*ft_strstr(const char *haystack, const char *needle);
 char				*ft_strnstr(const char *haystack,
 					const char *needle, size_t len);
 int					ft_strcmp(const char *s1, const char *s2);
 int					ft_strncmp(const char *s1, const char *s2, size_t n);
-int     			ft_atoi(const char *str);
+int					ft_atoi(const char *str);
 int					ft_isalpha(int c);
 int					ft_isdigit(int c);
-int                 ft_ishexdigit(char c);
+int					ft_ishexdigit(char c);
 int					ft_isalnum(int c);
 int					ft_isascii(int c);
 int					ft_isprint(int c);
@@ -77,7 +77,7 @@ void				*ft_memalloc(size_t size);
 void				ft_memdel(void **ap);
 char				*ft_strnew(size_t size);
 void				ft_strdel(char **as);
-void                ft_strlst_free(char **strlst);
+void				ft_strlst_free(char **strlst);
 void				ft_strclr(char *s);
 void				ft_striter(char *s, void (*f)(char *));
 void				ft_striteri(char *s, void (*f)(unsigned int i, char *));
@@ -90,8 +90,8 @@ char				*ft_strjoin(char const *s1, char const *s2);
 char				*ft_strnjoin(int nb_arg, ...);
 char				*ft_strtrim(char const *s);
 char				**ft_strsplit(char const *s, char c);
-char				*ft_itoa(intmax_t n);
-char				*ft_uitoa(uintmax_t n);
+char				*ft_itoa(long long n);
+char				*ft_uitoa(unsigned long long n);
 void				ft_putchar(char c);
 void				ft_putstr(char const *s);
 void				ft_putendl(char const *s);
@@ -114,23 +114,15 @@ char				*ft_uconvert_base(char *nbr, char *base_from,
 					char *base_to);
 int					ft_any(char **tab, int (*f)(char*));
 void				ft_swap(char **tab, int i);
-intmax_t			ft_atoi_base(char *str, char *base);
-uintmax_t			ft_uatoi_base(char *str, char *base);
+long long			ft_atoi_base(char *str, char *base);
+unsigned long long	ft_uatoi_base(char *str, char *base);
 char				*ft_strcutuntil(char **src, int c);
 char				*ft_strshorten(char **s, int start, int len);
 int					get_next_line(const int fd, char **line);
+int					get_next_line_ps(const int fd, char **line);
 int					ft_power(int nbr, int power);
 void				ft_putstab(char **tab);
 void				ft_align_right(char *str);
 unsigned long long	ft_opts(char **argv, char *all_opt);
-void	            ft_lstaddend(t_list **alst, t_list *new);
-
-typedef struct	s_line
-{
-    int				fd;
-    char			*str;
-    size_t			size;
-    size_t			remaining;
-}				t_line;
 
 #endif

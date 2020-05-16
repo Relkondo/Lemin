@@ -6,7 +6,7 @@
 #    By: scoron <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/06 17:44:30 by scoron            #+#    #+#              #
-#    Updated: 2019/03/06 17:39:32 by scoron           ###   ########.fr        #
+#    Updated: 2020/05/10 01:47:31 by scoron           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -82,6 +82,7 @@ SRCS =  ft_memset.c \
         ft_strcutuntil.c \
         ft_strshorten.c \
         get_next_line.c \
+        get_next_line_ps.c \
         ft_power.c \
         ft_putstab.c \
         ft_align_right.c \
@@ -92,18 +93,23 @@ SRCS =  ft_memset.c \
         Printf/convert_speci.c \
         Printf/int_print.c \
         Printf/size.c \
-        ft_lstaddend.c \
+
+RED = \033[0;31m
+GREEN = \033[0;32m
+NC = \033[0m
 
 OBJS = $(SRCS:.c=.o)
 
 all : $(NAME)
 
 $(NAME) : $(OBJS)
-		@ar -rc $(NAME) $(OBJS)
-		@ranlib $(NAME)
+		echo "$(GREEN)compiling $@...$(NC)"
+		ar -rc $(NAME) $(OBJS)
+		ranlib $(NAME)
+		echo "$(GREEN)$@ is ready$(NC)"
 
-%.o : %.c
-	@gcc -Wall -Wextra -Werror -Iincludes -c $< -o $@
+%.o : %.c includes/$(HEADER)
+	@clang -Wall -Wextra -Werror -fsanitize=address -Iincludes -c $< -o $@
 
 clean :
 	@/bin/rm -f $(OBJS)

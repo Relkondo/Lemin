@@ -6,7 +6,7 @@
 /*   By: scoron <scoron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/21 15:52:54 by scoron            #+#    #+#             */
-/*   Updated: 2019/02/11 15:10:02 by scoron           ###   ########.fr       */
+/*   Updated: 2020/05/09 13:53:33 by scoron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,13 +85,13 @@ void		cs_str(t_ftp *p, char c)
 
 void		cs_point(t_ftp *p, char c)
 {
-	uintmax_t		*point;
+	unsigned long long		*point;
 
 	(void)c;
 	p->f & F_ZERO && p->f & F_PRECI ? p->f ^= F_ZERO : 0;
 	p->f |= F_SHARP;
-	point = (uintmax_t *)va_arg(p->va, void *);
-	p->u_val = (uintmax_t)point;
+	point = (unsigned long long *)va_arg(p->va, void *);
+	p->u_val = (unsigned long long)point;
 	p->size = size_ba(p, p->u_val, 'x');
 	p->u_val == 0 ? (p->size += 2) : 0;
 	print_ba(p, p->u_val, "0123456789abcdef", 'p');

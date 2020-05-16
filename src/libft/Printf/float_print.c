@@ -6,13 +6,13 @@
 /*   By: scoron <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/13 17:52:30 by scoron            #+#    #+#             */
-/*   Updated: 2019/02/11 13:58:31 by scoron           ###   ########.fr       */
+/*   Updated: 2020/05/09 20:57:18 by scoron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static void	putdouble(char *res, long long itg, int dot, t_ftp *p)
+static void			putdouble(char *res, long long itg, int dot, t_ftp *p)
 {
 	long long		tmp;
 	size_t			len;
@@ -32,7 +32,7 @@ static void	putdouble(char *res, long long itg, int dot, t_ftp *p)
 	}
 }
 
-void		print_do(t_ftp *p, long double flt)
+void				print_do(t_ftp *p, long double flt)
 {
 	char			res[48];
 	long long		itg;
@@ -59,13 +59,13 @@ void		print_do(t_ftp *p, long double flt)
 	p->f & F_MINUS ? padding(p, ' ') : 0;
 }
 
-intmax_t	ft_arg(t_ftp *p)
+long long			ft_arg(t_ftp *p)
 {
-	intmax_t			n;
+	long long			n;
 
 	n = 0;
 	if (p->f & F_INTMAX || p->f & F_SIZET)
-		n = va_arg(p->va, intmax_t);
+		n = va_arg(p->va, long long);
 	else if (p->f & F_LONG)
 		n = (p->f & F_LONG2) ? va_arg(p->va, long long) :
 			va_arg(p->va, long);
@@ -77,13 +77,13 @@ intmax_t	ft_arg(t_ftp *p)
 	return (n);
 }
 
-uintmax_t	ft_uarg(t_ftp *p)
+unsigned long long	ft_uarg(t_ftp *p)
 {
-	uintmax_t			u;
+	unsigned long long	u;
 
 	u = 0;
 	if (p->f & F_INTMAX || p->f & F_SIZET)
-		u = va_arg(p->va, uintmax_t);
+		u = va_arg(p->va, unsigned long long);
 	else if (p->f & F_LONG)
 		u = (p->f & F_LONG2) ? va_arg(p->va, unsigned long long)
 			: va_arg(p->va, unsigned long);

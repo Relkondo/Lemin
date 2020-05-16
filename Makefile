@@ -6,7 +6,7 @@
 #    By: scoron <scoron@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/03/03 12:40:23 by scoron            #+#    #+#              #
-#    Updated: 2019/03/14 12:36:42 by scoron           ###   ########.fr        #
+#    Updated: 2020/05/16 01:46:29 by scoron           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ O_PATH = obj/
 L_PATH = libft/
 
 LIBFT = $(addprefix $(S_PATH), $(L_PATH))
-FLAGS = -Wall -Wextra -Werror
+FLAGS = -Wall -Wextra -Werror -fsanitize=address,undefined -g3
 CC = clang
 
 SRC:=$(addprefix $(S_PATH),$(addsuffix .c,$(BASE_SRC)))
@@ -32,7 +32,13 @@ NC		=	\033[0m
 
 all: $(NAME)
 
-$(NAME): lib $(OBJ)
+check: check_leak check_error
+
+check_leak:
+
+check_error:
+
+$(NAME): $(LIBFT)libft.a $(OBJ)
 	@echo "$(GREEN)compiling $@...$(NC)"
 	@$(CC) -o $(NAME) $(OBJ) $(FLAGS) -I $(L_PATH)$(H_PATH) -L $(LIBFT) -lft
 	@echo "$(GREEN)$@ is ready$(NC)"
@@ -41,10 +47,12 @@ $(O_PATH)%.o: $(S_PATH)%.c
 	@mkdir -p $(O_PATH)
 	@$(CC) $(FLAGS) -I $(H_PATH) -c $< -o $@
 
-lib :
+$(LIBFT)libft.a: FORCE
 	@echo "$(GREEN)compiling $@...$(NC)"
-	@make -C $(LIBFT)
+	$(MAKE) -C $(LIBFT)
 	@echo "$(GREEN)$@ is ready$(NC)"
+
+FORCE:
 
 clean:
 	@echo "$(RED)deleting objects...$(NC)"
@@ -54,8 +62,8 @@ clean:
 fclean : clean
 	@echo "$(RED)deleting executable...$(NC)"
 	@make -C $(LIBFT) fclean
-	@/bin/rm -f $(NAME)
+	@$(RM) $(NAME)
 
 re: fclean all
 
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re FORCE check check_leak check_error

@@ -6,15 +6,15 @@
 /*   By: scoron <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/13 17:52:30 by scoron            #+#    #+#             */
-/*   Updated: 2019/02/11 14:57:24 by scoron           ###   ########.fr       */
+/*   Updated: 2020/05/09 20:50:51 by scoron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static void		putint(char *res, intmax_t n, size_t len)
+static void		putint(char *res, long long n, size_t len)
 {
-	uintmax_t	tmp;
+	unsigned long long	tmp;
 
 	tmp = n < 0 ? -n : n;
 	n == 0 ? res[0] = '0' : 0;
@@ -26,12 +26,12 @@ static void		putint(char *res, intmax_t n, size_t len)
 	}
 }
 
-void			print_nu(t_ftp *p, intmax_t n)
+void			print_nu(t_ftp *p, long long n)
 {
-	char		res[21];
-	size_t		len;
-	int			pre;
-	int			i;
+	char				res[21];
+	size_t				len;
+	int					pre;
+	int					i;
 
 	i = 0;
 	len = 1;
@@ -50,11 +50,11 @@ void			print_nu(t_ftp *p, intmax_t n)
 	p->f & F_MINUS ? padding(p, ' ') : 0;
 }
 
-static void		uputint_base(char *res, uintmax_t n, char *base_to)
+static void		uputint_base(char *res, unsigned long long n, char *base_to)
 {
 	int					count;
 	int					bs;
-	uintmax_t			tmp;
+	unsigned long long	tmp;
 
 	bs = 0;
 	count = 1;
@@ -74,12 +74,12 @@ static void		uputint_base(char *res, uintmax_t n, char *base_to)
 	}
 }
 
-void			print_ba(t_ftp *p, uintmax_t n, char *base, char c)
+void			print_ba(t_ftp *p, unsigned long long n, char *base, char c)
 {
-	char		res[23];
-	int			pre;
-	size_t		len;
-	int			i;
+	char				res[23];
+	int					pre;
+	size_t				len;
+	int					i;
 
 	i = 0;
 	pre = p->preci;

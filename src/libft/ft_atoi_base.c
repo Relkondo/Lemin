@@ -6,7 +6,7 @@
 /*   By: scoron <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/11 18:52:00 by scoron            #+#    #+#             */
-/*   Updated: 2018/12/15 20:58:34 by scoron           ###   ########.fr       */
+/*   Updated: 2020/05/09 13:48:57 by scoron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,12 +92,12 @@ static int		ft_find(char *str, char *base, int i, int j)
 	}
 }
 
-intmax_t		ft_atoi_base(char *str, char *base)
+long long		ft_atoi_base(char *str, char *base)
 {
 	int			bs;
 	int			i;
 	int			sign;
-	intmax_t	nb;
+	long long	nb;
 
 	bs = 0;
 	nb = 0;

@@ -6,24 +6,24 @@
 /*   By: scoron <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/10 14:07:55 by scoron            #+#    #+#             */
-/*   Updated: 2018/11/11 14:09:42 by scoron           ###   ########.fr       */
+/*   Updated: 2020/05/03 07:05:15 by scoron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_isdigit(int c)
+int	ft_isdigit(int c)
 {
 	if (c < '0' || c > '9')
 		return (0);
 	return (1);
 }
 
-int ft_ishexdigit(char c)
+int	ft_ishexdigit(char c)
 {
-    if (ft_isdigit(c) || (c >= 'A' && c <= 'F') ||
-        (c >= 'a' && c <= 'f'))
-        return (1);
-    else
-        return (0);
+	if (ft_isdigit(c) || (c >= 'A' && c <= 'F') ||
+			(c >= 'a' && c <= 'f'))
+		return (1);
+	else
+		return (0);
 }

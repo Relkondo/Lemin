@@ -6,13 +6,13 @@
 /*   By: scoron <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/13 15:04:24 by scoron            #+#    #+#             */
-/*   Updated: 2018/12/02 21:14:23 by scoron           ###   ########.fr       */
+/*   Updated: 2020/05/03 19:20:33 by scoron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strjoin(char const *s1, char const *s2)
+char		*ft_strjoin(char const *s1, char const *s2)
 {
 	char	*res;
 	int		i;
@@ -33,17 +33,22 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	return (res);
 }
 
-char	*ft_strnjoin(int nb_str, ...)
+char		*ft_strnjoin(int nb_str, ...)
 {
-    va_list			va;
-    int             i;
-    char*           res;
+	va_list	va;
+	int		i;
+	char	*temp;
+	char	*res;
 
-    va_start(va, nb_str);
-    i = 0;
-    res = ft_strnew(0);
-    while (++i <= nb_str)
-        res = ft_strjoin(res, va_arg(va, char *));
-    va_end(va);
-    return (res);
+	va_start(va, nb_str);
+	i = 0;
+	temp = ft_strnew(0);
+	while (++i <= nb_str)
+	{
+		res = ft_strjoin(temp, va_arg(va, char *));
+		free(temp);
+		temp = res;
+	}
+	va_end(va);
+	return (res);
 }

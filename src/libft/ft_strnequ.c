@@ -6,17 +6,16 @@
 /*   By: scoron <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/04 13:07:29 by scoron            #+#    #+#             */
-/*   Updated: 2018/11/14 16:42:10 by scoron           ###   ########.fr       */
+/*   Updated: 2020/05/09 15:29:41 by scoron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_strnequ(char const *s1, char const *s2, size_t n)
+int		ft_strnequ(char const *s1, char const *s2, size_t n)
 {
-	if (s1 == 0 || s2 == 0)
-		return (0);
-	if (!(ft_strncmp(s1, s2, n)))
+	if (s1 && s2 && ft_strncmp(s1, s2, n) == 0)
 		return (1);
-	return (0);
+	else
+		return (0);
 }

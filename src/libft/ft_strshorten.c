@@ -6,7 +6,7 @@
 /*   By: scoron <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/24 17:49:53 by scoron            #+#    #+#             */
-/*   Updated: 2018/11/25 13:26:00 by scoron           ###   ########.fr       */
+/*   Updated: 2020/05/03 18:58:24 by scoron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,11 @@ char	*ft_strshorten(char **s, int start, int len)
 
 	len_s = (int)ft_strlen(*s);
 	if (!s || !(*s) || start >= len_s)
+	{
+		if (*s)
+			free(*s);
 		return (NULL);
+	}
 	if (start + len > len_s)
 		len = len_s - start;
 	if (!(newstr = ft_strsub(*s, start, len)))
