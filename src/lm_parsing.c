@@ -26,7 +26,7 @@ static t_node	*lm_parse_nodes(char **line, t_node *end, int *res)
     if (!(ft_strcmp(*line, "##start") && check > 0 && (check *= -1)))
     {
         ft_strdel(line);
-        if (get_next_line(0, line) != 1)
+        if (get_next_line_lm(0, line) != 1)
             return (NULL);
         if (!(end = lm_generate_nodes(end, line, 1)))
             return (NULL);
@@ -34,7 +34,7 @@ static t_node	*lm_parse_nodes(char **line, t_node *end, int *res)
     else if (!(ft_strcmp(*line, "##end")) && (check % 2) != 0 && (check *= 2))
     {
         ft_strdel(line);
-        if (get_next_line(0, line) != 1)
+        if (get_next_line_lm(0, line) != 1)
             return (NULL);
         if (!(end = lm_generate_nodes(end, line, -1)))
             return (NULL);
@@ -52,7 +52,7 @@ static int		lm_get_nodes(t_farm *farm, char **line)
 
     start = NULL;
     end = NULL;
-	while ((res = (get_next_line(0, line) == 1)) && (ft_strchr(*line, ' ')
+	while ((res = (get_next_line_lm(0, line) == 1)) && (ft_strchr(*line, ' ')
                                                      || *line[0] == '#'))
 	{
 		if (*line[0] == 'L')
@@ -80,7 +80,7 @@ static int		lm_pipeline(t_farm *farm, char *line)
 	if ((res = lm_parsing_pipes(farm, line)) == -1 || !res)
 		return (-1);
 	ft_strdel(&line);
-	while ((res = (get_next_line(0, &line) == 1)) && line[0] != '\0')
+	while ((res = (get_next_line_lm(0, &line) == 1)) && line[0] != '\0')
 	{
 		if (line[0] != '#')
 		{

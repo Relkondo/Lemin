@@ -6,7 +6,7 @@
 #    By: scoron <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/06 17:44:30 by scoron            #+#    #+#              #
-#    Updated: 2020/05/10 01:47:31 by scoron           ###   ########.fr        #
+#    Updated: 2020/05/17 00:30:10 by scoron           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -83,6 +83,7 @@ SRCS =  ft_memset.c \
         ft_strshorten.c \
         get_next_line.c \
         get_next_line_ps.c \
+        get_next_line_lm.c \
         ft_power.c \
         ft_putstab.c \
         ft_align_right.c \

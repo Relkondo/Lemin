@@ -6,7 +6,7 @@
 #    By: scoron <scoron@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/03/03 12:40:23 by scoron            #+#    #+#              #
-#    Updated: 2020/05/16 01:46:29 by scoron           ###   ########.fr        #
+#    Updated: 2020/05/17 00:53:58 by scoron           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ O_PATH = obj/
 L_PATH = libft/
 
 LIBFT = $(addprefix $(S_PATH), $(L_PATH))
-FLAGS = -Wall -Wextra -Werror -fsanitize=address,undefined -g3
+FLAGS = -Wall -Wextra -Werror -fsanitize=address,undefined
 CC = clang
 
 SRC:=$(addprefix $(S_PATH),$(addsuffix .c,$(BASE_SRC)))

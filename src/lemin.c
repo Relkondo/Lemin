@@ -2,9 +2,9 @@
 
 int			lm_get_nb_ants(char *line)
 {
-    long		ret;
+    long		numb;
 
-    ret = 0;
+    numb = 0;
     if (*line == '+')
         line++;
     if (*line == '-')
@@ -13,11 +13,11 @@ int			lm_get_nb_ants(char *line)
     {
         if (!(*line >= '0' && *line <= '9'))
             return (-1);
-        ret = ret * 10 + *(line)++ - 48;
-        if (ret > 2147483647)
+        numb = numb * 10 + *(line)++ - 48;
+        if (numb > 2147483647)
             return (-1);
     }
-    return (ret);
+    return (numb);
 }
 
 t_farm			*lm_generate_farm(void)
@@ -38,7 +38,7 @@ t_farm			*lm_generate_farm(void)
 static int		lm_exit_lemin(t_farm *farm, int error)
 {
     char	*empty;
-    while (get_next_line(0, &empty) > 0)
+    while (get_next_line_lm(0, &empty) > 0)
         ft_strdel(&empty);
     lm_del_farm(farm);
     if (error == 1)
@@ -60,7 +60,7 @@ int				main(void)
 
 	if (!(farm = lm_generate_farm()))
 		return (-1);
-	if (get_next_line(0, &line) != 1)
+	if (get_next_line_lm(0, &line) != 1)
 		return (lm_exit_lemin(farm, 1));
     farm->nb_ants = lm_get_nb_ants(line);
     ft_strdel(&line);
