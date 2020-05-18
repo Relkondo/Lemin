@@ -1,6 +1,8 @@
+rm -rf result.txt
+
 for c in {1..20}
 do
-./generator --big-superposition > instructions.txt
+./generator --flow-one > instructions.txt
 cat instructions.txt | grep -E '#Here' >> result.txt
 
 for lemin in "$@"
