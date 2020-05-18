@@ -42,7 +42,6 @@ static char	*ft_spmall(char const *s, int i, char c)
 		j++;
 		i++;
 	}
-//	ft_printf("split 2 : %s, size : %d\n", s, j);
 	if (!(res = (char *)malloc((j + 1) * sizeof(char))))
 		return (0);
 	return (res);
@@ -71,7 +70,6 @@ static void	ft_spcpy(char **res, char const *s, char c)
 			i++;
 			j++;
 		}
-//		if (s[i])
 		res[k][j] = 0;
 	}
 }
@@ -80,8 +78,6 @@ char		**ft_strsplit(char const *s, char c)
 {
 	int		w;
 	char	**res;
-
-//	ft_printf("split 1 : %s\n", s);
 
 	if (s == 0)
 		return (0);

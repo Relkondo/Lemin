@@ -22,7 +22,6 @@ static t_node	*lm_parse_nodes(char **line, t_node *end, int *res)
 {
     static int	check = 1;
 
-  //  ft_printf("\ncheck start: %d, line : %s\n", check, *line);
     if (*line[0] != '#')
         return (lm_generate_nodes(end, line, 0));
     if (!(ft_strcmp(*line, "##start")) && check > 0 && (check *= -1))
@@ -34,7 +33,6 @@ static t_node	*lm_parse_nodes(char **line, t_node *end, int *res)
     }
     else if (!(ft_strcmp(*line, "##end")) && (check % 2) != 0 && (check *= 2))
     {
-  //      ft_printf("check enter: %d, line : %s\n", check, *line);
         if (lm_next_line(line) != 1)
             return (NULL);
         if (!(end = lm_generate_nodes(end, line, -1)))
@@ -42,7 +40,6 @@ static t_node	*lm_parse_nodes(char **line, t_node *end, int *res)
     }
     else
         *res = 0;
-   // ft_printf("\ncheck end: %d, line : %s, res : %d\n", check, *line, *res);
     return ((*res == 0) ? NULL : end);
 }
 

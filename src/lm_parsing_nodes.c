@@ -16,6 +16,28 @@ static t_node	*lm_clean_mem(char **mem, t_node *room, t_node *ret)
 	return (ret);
 }
 
+static void		init_node(t_node *new, int entry) 
+{
+	new->entry = entry;
+	new->ants = 0;
+	new->cost = (entry == 1) ? 0 : -1;
+	new->id = -1;
+	new->passed = 0;
+	new->prev_id = -1;
+	new->pipes = NULL;
+	new->next = NULL;
+}
+
+static int		is_not_zero(char *numb)
+{
+	while (*numb)
+	{
+		if (*(numb)++ != '0')
+			return (0);
+	}
+	return (1);
+}		
+
 t_node			*lm_generate_nodes(t_node *end, char **line, int entry)
 {
 	t_node		*new;
@@ -27,18 +49,14 @@ t_node			*lm_generate_nodes(t_node *end, char **line, int entry)
 		return (lm_clean_mem(mem, NULL, NULL));
 	if (!(new->pseudo = ft_strdup(mem[0])))
 		return (lm_clean_mem(mem, new, NULL));
-	new->entry = entry;
-	new->ants = 0;
-	new->cost = (entry == 1) ? 0 : -1;
-	new->id = -1;
-	new->passed = 0;
-	new->prev_id = -1;
-	new->pipes = NULL;
-	new->next = NULL;
-	if ((new->x = ft_atoi(mem[1])) > INT_MAX || new->x < INT_MIN)
+	init_node(new, entry);
+	if ((new->x = ft_atoi(mem[1])) > INT_MAX || new->x < INT_MIN ||
+					(new->x == 0 && is_not_zero(mem[1])))
 		return (lm_clean_mem(mem, new, NULL));
-	if ((new->y = ft_atoi(mem[2])) > INT_MAX || new->x < INT_MIN)
+	if ((new->y = ft_atoi(mem[2])) > INT_MAX || new->y < INT_MIN ||
+					(new->y == 0 && is_not_zero(mem[2])))
 		return (lm_clean_mem(mem, new, NULL));
+	// ft_printf("\nmem3 : %s, x : %d, y : %d, int min : %d \n", mem[1], new->x, new->y, INT_MIN);
 	if (end)
 		end->next = new;
 	return (lm_clean_mem(mem, NULL, new));
