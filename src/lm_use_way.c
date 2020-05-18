@@ -1,9 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   lm_use_way.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: scoron <scoron@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/05/18 05:38:01 by scoron            #+#    #+#             */
+/*   Updated: 2020/05/18 05:47:25 by scoron           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "lemin.h"
 
 static int		lm_verif_prev(t_node **nodes, int prev_id)
 {
 	if (prev_id == -1 || (prev_id >= 0 && !nodes[prev_id]) ||
-		(prev_id < 0 && !nodes[-prev_id]->next))
+			(prev_id < 0 && !nodes[-prev_id]->next))
 		return (0);
 	return (1);
 }

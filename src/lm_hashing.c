@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   lm_hashing.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: scoron <scoron@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/05/18 05:37:42 by scoron            #+#    #+#             */
+/*   Updated: 2020/05/18 05:57:27 by scoron           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "lemin.h"
 
@@ -14,7 +25,8 @@ static t_node			**lm_generate_nodemap(int size)
 	return (nodemap);
 }
 
-static unsigned int		lm_find_closest(t_node **nodes, unsigned int hash, int size)
+static unsigned int		lm_find_closest(t_node **nodes,
+							unsigned int hash, int size)
 {
 	int		left;
 	int		right;

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   lm_calc_costs.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: scoron <scoron@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/05/18 05:37:25 by scoron            #+#    #+#             */
+/*   Updated: 2020/05/18 05:46:23 by scoron           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "lemin.h"
 
 static void		lm_swap_ways(t_node ***ways, int i, int j)
@@ -5,8 +17,8 @@ static void		lm_swap_ways(t_node ***ways, int i, int j)
 	t_node		**tmp;
 
 	tmp = ways[i];
-    ways[i] = ways[j];
-    ways[j] = tmp;
+	ways[i] = ways[j];
+	ways[j] = tmp;
 }
 
 static int		lm_splitsort(t_node ***ways, int orig, int end)
@@ -23,11 +35,11 @@ static int		lm_splitsort(t_node ***ways, int orig, int end)
 		if (ways[j][0]->cost <= pivot)
 		{
 			i++;
-            lm_swap_ways(ways, i, j);
+			lm_swap_ways(ways, i, j);
 		}
 		j++;
 	}
-    lm_swap_ways(ways, i + 1, j);
+	lm_swap_ways(ways, i + 1, j);
 	return (i + 1);
 }
 
@@ -38,8 +50,8 @@ static void		lm_sort_ways(t_node ***ways, int orig, int end)
 	if (orig < end)
 	{
 		pivot = lm_splitsort(ways, orig, end);
-        lm_sort_ways(ways, orig, pivot - 1);
-        lm_sort_ways(ways, pivot + 1, end);
+		lm_sort_ways(ways, orig, pivot - 1);
+		lm_sort_ways(ways, pivot + 1, end);
 	}
 }
 
@@ -54,8 +66,8 @@ void			lm_recalc_costs(t_node ***ways)
 		j = 0;
 		while (ways[i][j])
 			j++;
-        ways[i][0]->cost = j - 1;
+		ways[i][0]->cost = j - 1;
 		i++;
 	}
-    lm_sort_ways(ways, 0, i - 1);
+	lm_sort_ways(ways, 0, i - 1);
 }

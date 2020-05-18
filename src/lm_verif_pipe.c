@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   lm_verif_pipe.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: scoron <scoron@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/05/18 05:38:15 by scoron            #+#    #+#             */
+/*   Updated: 2020/05/18 05:47:30 by scoron           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "lemin.h"
 
 char		**lm_verif_node2(char *node_line, int i, int space)
@@ -53,10 +65,10 @@ char		**lm_verif_pipe(char *line)
 	int		i;
 	char	check;
 
-    check = 0;
+	check = 0;
 	i = 0;
 	if (*line == '#')
-	    return (NULL);
+		return (NULL);
 	while (line[i])
 	{
 		if (line[i] == '-')

@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   lm_init_algo.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: scoron <scoron@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/05/18 05:37:45 by scoron            #+#    #+#             */
+/*   Updated: 2020/05/18 05:48:57 by scoron           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "lemin.h"
 
@@ -7,8 +18,8 @@ static int		lm_possible_ways(t_node **nodes)
 	int			goal;
 	t_pipe		*tmp;
 
-    origin = 0;
-    goal = 0;
+	origin = 0;
+	goal = 0;
 	tmp = nodes[FIRST]->pipes;
 	while (tmp)
 	{
@@ -32,7 +43,7 @@ static int		lm_one_step_path(t_pipe *pipe)
 	{
 		if (pipe->node->id == LAST)
 			return (1);
-        pipe = pipe->next;
+		pipe = pipe->next;
 	}
 	return (0);
 }
@@ -42,12 +53,12 @@ static void		lm_swap_nodes(t_farm *farm, t_node **nodes, int i, int node_id)
 	t_node	*tmp;
 
 	tmp = nodes[i];
-    nodes[i] = nodes[node_id];
-    nodes[node_id] = tmp;
-    nodes[i]->id = i;
-    nodes[node_id]->id = node_id;
+	nodes[i] = nodes[node_id];
+	nodes[node_id] = tmp;
+	nodes[i]->id = i;
+	nodes[node_id]->id = node_id;
 	if (farm->end == i)
-        farm->end = node_id;
+		farm->end = node_id;
 }
 
 int				lm_init_algo(t_farm *farm, t_node **nodes)
@@ -56,13 +67,13 @@ int				lm_init_algo(t_farm *farm, t_node **nodes)
 		return (0);
 	if (!ft_strcmp(nodes[farm->start]->pseudo, nodes[farm->end]->pseudo))
 		return (1);
-    lm_swap_nodes(farm, nodes, FIRST, farm->start);
-    lm_swap_nodes(farm, nodes, LAST, farm->end);
+	lm_swap_nodes(farm, nodes, FIRST, farm->start);
+	lm_swap_nodes(farm, nodes, LAST, farm->end);
 	if (lm_one_step_path(nodes[0]->pipes))
 		return (lm_solve_one_step(nodes[1]->pseudo, farm->nb_ants));
 	if (!(farm->max_ways = lm_possible_ways(nodes)))
 		return (0);
-    nodes[FIRST]->ants = farm->nb_ants;
-    nodes[LAST]->ants = farm->nb_ants;
+	nodes[FIRST]->ants = farm->nb_ants;
+	nodes[LAST]->ants = farm->nb_ants;
 	return (lm_sb_algo(farm, nodes));
 }

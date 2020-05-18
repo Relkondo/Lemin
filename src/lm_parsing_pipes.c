@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   lm_parsing_pipes.c                                 :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: scoron <scoron@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/05/18 05:37:55 by scoron            #+#    #+#             */
+/*   Updated: 2020/05/18 05:47:17 by scoron           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "lemin.h"
 
 static t_node	*lm_get_node(t_farm *farm, char *name, int size)
@@ -14,10 +26,10 @@ static t_node	*lm_get_node(t_farm *farm, char *name, int size)
 	while (left >= 0 || right < size)
 	{
 		if (left >= 0 && farm->nodes[left] &&
-			!ft_strcmp(farm->nodes[left]->pseudo, name))
+				!ft_strcmp(farm->nodes[left]->pseudo, name))
 			return (farm->nodes[left]);
 		if (right < size && farm->nodes[right] &&
-			!ft_strcmp(farm->nodes[right]->pseudo, name))
+				!ft_strcmp(farm->nodes[right]->pseudo, name))
 			return (farm->nodes[right]);
 		left--;
 		right++;

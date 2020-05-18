@@ -6,13 +6,13 @@
 /*   By: scoron <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/01 11:44:17 by scoron            #+#    #+#             */
-/*   Updated: 2018/11/15 16:01:05 by scoron           ###   ########.fr       */
+/*   Updated: 2020/05/18 05:59:23 by scoron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_atoi(const char *str)
+int	ft_atoi(const char *str)
 {
 	int		i;
 	long	result;
@@ -38,11 +38,7 @@ int		ft_atoi(const char *str)
 	return (sign * (int)result);
 }
 
-
-
-
-
-int		ft_atoi_lm(const char *str)
+int	ft_atoi_lm(const char *str)
 {
 	int		i;
 	long	result;
@@ -60,7 +56,8 @@ int		ft_atoi_lm(const char *str)
 	{
 		if (result > 214748364)
 			return (0);
-		if (result == 214748364 && ((sign == 1 && str[i] == '8') || str[i] == '9'))
+		if (result == 214748364 && ((sign == 1 && str[i] == '8')
+											|| str[i] == '9'))
 			return (0);
 		result = 10 * result + str[i++] - '0';
 	}

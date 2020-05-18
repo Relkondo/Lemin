@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   lemin.h                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: scoron <scoron@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/05/18 05:55:09 by scoron            #+#    #+#             */
+/*   Updated: 2020/05/18 05:56:12 by scoron           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef LEMIN_H
 # define LEMIN_H
 
@@ -66,17 +78,6 @@ int					lm_duplic_nodes(t_node ***ways);
 void				lm_recalc_costs(t_node ***ways);
 void				lm_move(t_farm *farm, t_node ***ways, t_node **nodes);
 int					lm_solve_one_step(char *end, int ants);
-int		            lm_del(char **line, t_node *current_node, int res, int check);
-
-
-
-
-
-//to delete
-void				td_display_nodes(t_node **nodes);
-void				display_tab(t_node **nodes, int size);
-void				td_display_ways(t_farm *farm, t_node ***ways);
-void				td_display_node(t_node *node);
-void				td_checker(t_node ***ways, t_node *start, t_node *end);
-
+int					lm_del(char **line, t_node *current_node,
+											int res, int check);
 #endif

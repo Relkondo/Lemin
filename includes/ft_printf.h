@@ -6,7 +6,7 @@
 /*   By: scoron <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/13 15:24:04 by scoron            #+#    #+#             */
-/*   Updated: 2019/03/06 13:08:29 by scoron           ###   ########.fr       */
+/*   Updated: 2020/05/18 05:54:47 by scoron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,21 +18,21 @@
 # include <stdint.h>
 # include <stdlib.h>
 
-# define BUF_SIZE 90
-# define F_SHARP		(1 << 0)
-# define F_SPACE		(1 << 1)
-# define F_PLUS			(1 << 2)
-# define F_MINUS		(1 << 3)
-# define F_ZERO			(1 << 4)
-# define F_PREZERO		(1 << 5)
-# define F_UPCASE		(1 << 6)
-# define F_SHORT		(1 << 7)
-# define F_LONG			(1 << 8)
-# define F_LONG2		(1 << 9)
-# define F_CHAR			(1 << 10)
-# define F_INTMAX		(1 << 11)
-# define F_SIZET		(1 << 12)
-# define F_PRECI		(1 << 13)
+# define BUF_SIZE 		90
+# define F_SHARP		1
+# define F_SPACE		2
+# define F_PLUS			4
+# define F_MINUS		8
+# define F_ZERO			16
+# define F_PREZERO		32
+# define F_UPCASE		64
+# define F_SHORT		128
+# define F_LONG			256
+# define F_LONG2		512
+# define F_CHAR			1024
+# define F_INTMAX		2048
+# define F_SIZET		4096
+# define F_PRECI		8192
 
 typedef struct		s_ftp
 {
@@ -60,7 +60,7 @@ void				cs_str(t_ftp *p, char c);
 void				cs_point(t_ftp *p, char c);
 void				cs_float(t_ftp *p, char c);
 int					ft_printf(char *format, ...);
-int		            ft_dprintf(int fd, char *format, ...);
+int					ft_dprintf(int fd, char *format, ...);
 void				padding(t_ftp *p, char c);
 uintmax_t			ft_uarg(t_ftp *p);
 intmax_t			ft_arg(t_ftp *p);
