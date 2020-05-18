@@ -5,6 +5,7 @@ static int		lm_exit_lemin(t_farm *farm, int error)
     char	*empty;
     while (get_next_line_lm(0, &empty) > 0)
         ft_strdel(&empty);
+    ft_strdel(&empty);
     lm_del_farm(farm);
     if (error == 1)
     {
