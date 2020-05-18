@@ -7,10 +7,9 @@ static int      lm_next_line(char **line) {
     if ((check = get_next_line_lm(0, line)) != 1)
         return check;
     while (*line[0] == '#') {
-        if (!(ft_strcmp(*line, "##start")) || !(ft_strcmp(*line, "##end"))) {
-            ft_strdel(line);
+        if (!(ft_strcmp(*line, "##start")) || !(ft_strcmp(*line, "##end")))
             return 0;
-        }
+    	ft_strdel(line);
         if ((check = get_next_line_lm(0, line)) != 1)
             return check;
     }
@@ -67,6 +66,7 @@ static int		lm_get_nodes(t_farm *farm, char **line)
 		}
 		ft_strdel(line);
 	}
+	ft_strdel(line);
 	if (res == -1)
 		return (lm_del(line, start, -1, 1));
 	if (!farm->size)
