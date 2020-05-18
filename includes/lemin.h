@@ -17,7 +17,6 @@ typedef struct		s_pipe
 
 typedef struct		s_node
 {
-	char			*pseudo;
 	int				cost;
 	int				id;
 	int				ants;
@@ -28,6 +27,7 @@ typedef struct		s_node
 	int				entry;
 	t_pipe			*pipes;
 	struct s_node	*next;
+	char			*pseudo;
 }					t_node;
 
 typedef struct		s_farm
@@ -49,7 +49,7 @@ int					lm_nodemap(t_farm *farm, t_node *start);
 int					lm_start_parsing(t_farm *farm, char *line);
 t_pipe				*lm_init_pipe(t_node *node, t_pipe *opp);
 t_node				**lm_index(t_farm *farm);
-int					lm_get_nb_ants(char *line);
+int					lm_get_nb_ants(t_farm *farm, char *line);
 char				**lm_verif_pipe(char *line);
 char				**lm_verif_node1(char *node_line);
 void				lm_del_pipes(t_pipe *current_pipe);
@@ -66,6 +66,7 @@ int					lm_duplic_nodes(t_node ***ways);
 void				lm_recalc_costs(t_node ***ways);
 void				lm_move(t_farm *farm, t_node ***ways, t_node **nodes);
 int					lm_solve_one_step(char *end, int ants);
+int		            lm_del(char **line, t_node *current_node, int res, int check);
 
 
 

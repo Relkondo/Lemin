@@ -1,9 +1,31 @@
 #include "lemin.h"
 
-int			lm_get_nb_ants(char *line)
+static int		lm_exit_lemin(t_farm *farm, int error)
+{
+    char	*empty;
+    while (get_next_line_lm(0, &empty) > 0)
+        ft_strdel(&empty);
+    lm_del_farm(farm);
+    if (error == 1)
+    {
+        write(2, "Error\n", 6);
+        return (-1);
+    }
+    else
+    {
+        return (0);
+    }
+}
+
+int			lm_get_nb_ants(t_farm *farm, char *line)
 {
     long		numb;
 
+    while (line[0] == '#' && ft_strcmp(line, "##start") && ft_strcmp(line, "##end"))
+    {
+        if (get_next_line_lm(0, &line) != 1)
+            return (lm_exit_lemin(farm, 1));
+    }
     numb = 0;
     if (*line == '+')
         line++;
@@ -35,34 +57,17 @@ t_farm			*lm_generate_farm(void)
     return (farm);
 }
 
-static int		lm_exit_lemin(t_farm *farm, int error)
-{
-    char	*empty;
-    while (get_next_line_lm(0, &empty) > 0)
-        ft_strdel(&empty);
-    lm_del_farm(farm);
-    if (error == 1)
-    {
-        write(2, "Error\n", 6);
-        return (-1);
-    }
-    else
-    {
-        return (0);
-    }
-}
-
 int				main(void)
 {
 	char		*line;
 	t_farm		*farm;
 	int			check;
 
-	if (!(farm = lm_generate_farm()))
-		return (-1);
-	if (get_next_line_lm(0, &line) != 1)
-		return (lm_exit_lemin(farm, 1));
-    farm->nb_ants = lm_get_nb_ants(line);
+    if (!(farm = lm_generate_farm()))
+        return (-1);
+    if (get_next_line_lm(0, &line) != 1)
+        return (lm_exit_lemin(farm, 1));
+    farm->nb_ants = lm_get_nb_ants(farm, line);
     ft_strdel(&line);
     if (farm->nb_ants <= 0 || !(check = lm_start_parsing(farm, line)) || check == -1)
         return lm_exit_lemin(farm, 1);

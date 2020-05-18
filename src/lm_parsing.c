@@ -1,46 +1,47 @@
 #include "lemin.h"
 
-static int		lm_del(char **line, t_node *current_node, int res)
-{
-	t_node		*tmp;
+static int      lm_next_line(char **line) {
+    int check;
 
-	if (res == 1)
-        res = -1;
-	while (current_node)
-	{
-		tmp = current_node->next;
-        current_node->next = NULL;
-        lm_del_node(&current_node);
-        current_node = tmp;
-	}
-	ft_strdel(line);
-	return (res);
+    ft_strdel(line);
+    if ((check = get_next_line_lm(0, line)) != 1)
+        return check;
+    while (*line[0] == '#') {
+        if (!(ft_strcmp(*line, "##start")) || !(ft_strcmp(*line, "##end"))) {
+            ft_strdel(line);
+            return 0;
+        }
+        if ((check = get_next_line_lm(0, line)) != 1)
+            return check;
+    }
+    return check;
 }
 
 static t_node	*lm_parse_nodes(char **line, t_node *end, int *res)
 {
     static int	check = 1;
 
+  //  ft_printf("\ncheck start: %d, line : %s\n", check, *line);
     if ((*line)[0] != '#')
         return (lm_generate_nodes(end, line, 0));
-    if (!(ft_strcmp(*line, "##start") && check > 0 && (check *= -1)))
+    if (!(ft_strcmp(*line, "##start")) && check > 0 && (check *= -1))
     {
-        ft_strdel(line);
-        if (get_next_line_lm(0, line) != 1)
+        if (lm_next_line(line) != 1)
             return (NULL);
         if (!(end = lm_generate_nodes(end, line, 1)))
             return (NULL);
     }
     else if (!(ft_strcmp(*line, "##end")) && (check % 2) != 0 && (check *= 2))
     {
-        ft_strdel(line);
-        if (get_next_line_lm(0, line) != 1)
+  //      ft_printf("check enter: %d, line : %s\n", check, *line);
+        if (lm_next_line(line) != 1)
             return (NULL);
         if (!(end = lm_generate_nodes(end, line, -1)))
             return (NULL);
     }
     else
         *res = 0;
+   // ft_printf("\ncheck end: %d, line : %s, res : %d\n", check, *line, *res);
     return ((*res == 0) ? NULL : end);
 }
 
@@ -56,20 +57,20 @@ static int		lm_get_nodes(t_farm *farm, char **line)
                                                      || *line[0] == '#'))
 	{
 		if (*line[0] == 'L')
-			return (lm_del(line, start, 0));
-		if (((*line)[0] == '#' && (*line)[1] == '#') || *line[0] != '#')
+			return (lm_del(line, start, 0, 1));
+		if (!(ft_strcmp(*line, "##start")) || !(ft_strcmp(*line, "##end")) || *line[0] != '#')
 		{
 			if (!(end = lm_parse_nodes(line, end, &res)))
-				return (lm_del(line, start, res));
+				return (lm_del(line, start, res, 1));
             (start == NULL) ? start = end : start;
 			farm->size++;
 		}
 		ft_strdel(line);
 	}
 	if (res == -1)
-		return (lm_del(line, start, -1));
+		return (lm_del(line, start, -1, 1));
 	if (!farm->size)
-		return (lm_del(line, start, 0));
+		return (lm_del(line, start, 0, 1));
 	return (lm_nodemap(farm, start));
 }
 
@@ -82,12 +83,12 @@ static int		lm_pipeline(t_farm *farm, char *line)
 	ft_strdel(&line);
 	while ((res = (get_next_line_lm(0, &line) == 1)) && line[0] != '\0')
 	{
-		if (line[0] != '#')
+		if (line[0] != '#' || !(ft_strcmp(line, "##start")) || !(ft_strcmp(line, "##end")))
 		{
             res = lm_parsing_pipes(farm, line);
 			if (!res)
 			{
-                lm_del(&line, NULL, 0);
+                lm_del(&line, NULL, 0, 0);
 				break ;
 			}
 			if (res == -1)
@@ -113,7 +114,7 @@ int				lm_start_parsing(t_farm *farm, char *line)
 	if ((res = lm_pipeline(farm, line)) == -1)
 	{
 		free(nodes);
-		return (lm_del(&line, NULL, res));
+		return (lm_del(&line, NULL, res, 1));
 	}
 	free(farm->nodes);
     farm->nodes = nodes;

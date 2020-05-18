@@ -1,5 +1,23 @@
 #include "lemin.h"
 
+int		lm_del(char **line, t_node *current_node, int res, int check)
+{
+    t_node		*tmp;
+
+    if (res == 1)
+        res = -1;
+    while (current_node)
+    {
+        tmp = current_node->next;
+        current_node->next = NULL;
+        lm_del_node(&current_node);
+        current_node = tmp;
+    }
+    if (check == 1)
+        ft_strdel(line);
+    return (res);
+}
+
 void			lm_del_pipes(t_pipe *current_pipe)
 {
 	t_pipe *tmp;

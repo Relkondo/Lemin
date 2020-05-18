@@ -75,6 +75,8 @@ char		**lm_verif_pipe(char *line)
 
     check = 0;
 	i = 0;
+	if (*line == '#')
+	    return (NULL);
 	while (line[i])
 	{
 		if (line[i] == '-')
