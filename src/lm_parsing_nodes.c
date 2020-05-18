@@ -1,11 +1,10 @@
 #include "lemin.h"
 
-static t_node	*lm_clean_mem(char **mem, t_node *room, char **line, t_node *ret)
+static t_node	*lm_clean_mem(char **mem, t_node *room, t_node *ret)
 {
 	int			i;
 
 	i = 0;
-	ft_strdel(line);
 	if (room)
         lm_del_node(&room);
 	while (mem && mem[i])
@@ -25,9 +24,9 @@ t_node			*lm_generate_nodes(t_node *end, char **line, int entry)
 	if (!(mem = lm_verif_node1(*line)))
 		return (NULL);
 	if (!(new = malloc(sizeof(t_node))))
-		return (lm_clean_mem(mem, NULL, line, NULL));
+		return (lm_clean_mem(mem, NULL, NULL));
 	if (!(new->pseudo = ft_strdup(mem[0])))
-		return (lm_clean_mem(mem, new, line, NULL));
+		return (lm_clean_mem(mem, new, NULL));
 	new->entry = entry;
 	new->ants = 0;
 	new->cost = (entry == 1) ? 0 : -1;
@@ -37,12 +36,12 @@ t_node			*lm_generate_nodes(t_node *end, char **line, int entry)
 	new->pipes = NULL;
 	new->next = NULL;
 	if ((new->x = ft_atoi(mem[1])) > INT_MAX || new->x < INT_MIN)
-		return (lm_clean_mem(mem, new, line, NULL));
+		return (lm_clean_mem(mem, new, NULL));
 	if ((new->y = ft_atoi(mem[2])) > INT_MAX || new->x < INT_MIN)
-		return (lm_clean_mem(mem, new, line, NULL));
+		return (lm_clean_mem(mem, new, NULL));
 	if (end)
 		end->next = new;
-	return (lm_clean_mem(mem, NULL, line, new));
+	return (lm_clean_mem(mem, NULL, new));
 }
 
 t_node					**lm_index(t_farm *farm)

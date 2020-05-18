@@ -1,8 +1,10 @@
 #include "lemin.h"
 
-static int		lm_exit_lemin(t_farm *farm, int error)
+static int		lm_exit_lemin(t_farm *farm, char **line, int error)
 {
     char	*empty;
+
+    ft_strdel(line);
     while (get_next_line_lm(0, &empty) > 0)
         ft_strdel(&empty);
     ft_strdel(&empty);
@@ -18,25 +20,28 @@ static int		lm_exit_lemin(t_farm *farm, int error)
     }
 }
 
-int			lm_get_nb_ants(t_farm *farm, char *line)
+int			lm_get_nb_ants(char **line)
 {
     long		numb;
+	char		*li;
 
-    while (line[0] == '#' && ft_strcmp(line, "##start") && ft_strcmp(line, "##end"))
+    while (*line[0] == '#' && ft_strcmp(*line, "##start") && ft_strcmp(*line, "##end"))
     {
-        if (get_next_line_lm(0, &line) != 1)
-            return (lm_exit_lemin(farm, 1));
-    }
-    numb = 0;
-    if (*line == '+')
-        line++;
-    if (*line == '-')
-        return (-1);
-    while (*line)
-    {
-        if (!(*line >= '0' && *line <= '9'))
+		ft_strdel(line);
+        if (get_next_line_lm(0, line) != 1) 
             return (-1);
-        numb = numb * 10 + *(line)++ - 48;
+    }
+	li = *line;
+    numb = 0;
+    if (*li == '+')
+        li++;
+    if (*li == '-')
+        return (-1);
+    while (*li)
+    {
+        if (!(*li >= '0' && *li <= '9'))
+            return (-1);
+        numb = numb * 10 + *(li)++ - 48;
         if (numb > 2147483647)
             return (-1);
     }
@@ -67,10 +72,10 @@ int				main(void)
     if (!(farm = lm_generate_farm()))
         return (-1);
     if (get_next_line_lm(0, &line) != 1)
-        return (lm_exit_lemin(farm, 1));
-    farm->nb_ants = lm_get_nb_ants(farm, line);
-    ft_strdel(&line);
-    if (farm->nb_ants <= 0 || !(check = lm_start_parsing(farm, line)) || check == -1)
-        return lm_exit_lemin(farm, 1);
-    return lm_exit_lemin(farm, 0);
+        return (lm_exit_lemin(farm, &line, 1));
+    if ((farm->nb_ants = lm_get_nb_ants(&line)) <= 0)
+        return (lm_exit_lemin(farm, &line, 1));
+    if ((check = lm_start_parsing(farm)) <= 0)
+        return lm_exit_lemin(farm, &line, 1);
+    return lm_exit_lemin(farm, &line, 0);
 }

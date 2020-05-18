@@ -6,11 +6,13 @@ static int      lm_next_line(char **line) {
     ft_strdel(line);
     if ((check = get_next_line_lm(0, line)) != 1)
         return check;
-    while (*line[0] == '#') {
+    while (*line[0] == '#') 
+	{
         if (!(ft_strcmp(*line, "##start")) || !(ft_strcmp(*line, "##end")))
             return 0;
     	ft_strdel(line);
-        if ((check = get_next_line_lm(0, line)) != 1)
+        check = get_next_line_lm(0, line);
+		if (check <= 0)
             return check;
     }
     return check;
@@ -21,7 +23,7 @@ static t_node	*lm_parse_nodes(char **line, t_node *end, int *res)
     static int	check = 1;
 
   //  ft_printf("\ncheck start: %d, line : %s\n", check, *line);
-    if ((*line)[0] != '#')
+    if (*line[0] != '#')
         return (lm_generate_nodes(end, line, 0));
     if (!(ft_strcmp(*line, "##start")) && check > 0 && (check *= -1))
     {
@@ -66,7 +68,6 @@ static int		lm_get_nodes(t_farm *farm, char **line)
 		}
 		ft_strdel(line);
 	}
-	ft_strdel(line);
 	if (res == -1)
 		return (lm_del(line, start, -1, 1));
 	if (!farm->size)
@@ -78,19 +79,17 @@ static int		lm_pipeline(t_farm *farm, char *line)
 {
 	int		res;
 
-	if ((res = lm_parsing_pipes(farm, line)) == -1 || !res)
-		return (-1);
+	res = lm_parsing_pipes(farm, line);
 	ft_strdel(&line);
+	if (res <= 0)
+		return (-1);
 	while ((res = (get_next_line_lm(0, &line) == 1)) && line[0] != '\0')
 	{
 		if (line[0] != '#' || !(ft_strcmp(line, "##start")) || !(ft_strcmp(line, "##end")))
 		{
             res = lm_parsing_pipes(farm, line);
 			if (!res)
-			{
-                lm_del(&line, NULL, 0, 0);
 				break ;
-			}
 			if (res == -1)
 				return (-1);
 		}
@@ -102,19 +101,22 @@ static int		lm_pipeline(t_farm *farm, char *line)
 	return (1);
 }
 
-int				lm_start_parsing(t_farm *farm, char *line)
+int				lm_start_parsing(t_farm *farm)
 {
 	t_node		**nodes;
+	char		*line;
 	int			res;
 
-	if ((res = lm_get_nodes(farm, &line)) == -1 || !res)
+	if ((res = lm_get_nodes(farm, &line)) <= 0)
 		return (res);
-	if (!line || line[0] == '\0' || !(nodes = lm_index(farm)))
+	if (line[0] == '\0' || (!(nodes = lm_index(farm)) && line))
+		ft_strdel(&line);
+	if	(!line || !(nodes))
 		return (0);
 	if ((res = lm_pipeline(farm, line)) == -1)
 	{
 		free(nodes);
-		return (lm_del(&line, NULL, res, 1));
+		return (lm_del(&line, NULL, res, 0));
 	}
 	free(farm->nodes);
     farm->nodes = nodes;
