@@ -6,7 +6,7 @@
 /*   By: scoron <scoron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/18 05:37:50 by scoron            #+#    #+#             */
-/*   Updated: 2020/05/18 06:02:14 by scoron           ###   ########.fr       */
+/*   Updated: 2020/05/18 06:31:41 by scoron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,16 +72,16 @@ static int		lm_get_nodes(t_farm *farm, char **line)
 		if (!(ft_strcmp(*line, "##start")) || !(ft_strcmp(*line, "##end"))
 													|| *line[0] != '#')
 		{
-			if (!(end = lm_parse_nodes(line, end, &res)) && farm->size++)
+			if (!(end = lm_parse_nodes(line, end, &res)))
 				return (lm_del(line, start, res, 1));
 			(start == NULL) ? start = end : start;
+			farm->size++;
 		}
 		ft_strdel(line);
 	}
-	if (res == -1)
-		return (lm_del(line, start, -1, 1));
-	if (!farm->size)
-		return (lm_del(line, start, 0, 1));
+	res = (res == -1 ? -1 : 0);
+	if (res == -1 || !farm->size)
+		return (lm_del(line, start, res, 1));
 	return (lm_nodemap(farm, start));
 }
 

@@ -1,400 +1,80 @@
-#Here is the number of lines required: 78
-#Here is the number of lines required: 78
+#Here is the number of lines required: 62
+#Here is the number of lines required: 62
 ../lem-in
-      81
-#Here is the number of lines required: 63
-#Here is the number of lines required: 63
-../lem-in
-      63
-#Here is the number of lines required: 63
-#Here is the number of lines required: 63
-../lem-in
-      63
-#Here is the number of lines required: 63
-#Here is the number of lines required: 63
-../lem-in
-      63
-#Here is the number of lines required: 63
-#Here is the number of lines required: 63
-../lem-in
-      63
-#Here is the number of lines required: 63
-#Here is the number of lines required: 63
-../lem-in
-      63
-#Here is the number of lines required: 81
-#Here is the number of lines required: 81
-../lem-in
-      81
-#Here is the number of lines required: 81
-#Here is the number of lines required: 81
-../lem-in
-      81
-#Here is the number of lines required: 82
-#Here is the number of lines required: 82
-../lem-in
-      82
-#Here is the number of lines required: 82
-#Here is the number of lines required: 82
-../lem-in
-      82
-#Here is the number of lines required: 82
-#Here is the number of lines required: 82
-../lem-in
-      82
-#Here is the number of lines required: 82
-#Here is the number of lines required: 82
-../lem-in
-      82
-#Here is the number of lines required: 82
-#Here is the number of lines required: 82
-../lem-in
-      82
-#Here is the number of lines required: 82
-#Here is the number of lines required: 82
-../lem-in
-      82
-#Here is the number of lines required: 82
-#Here is the number of lines required: 82
-../lem-in
-      82
-#Here is the number of lines required: 98
-#Here is the number of lines required: 98
-../lem-in
-      98
-#Here is the number of lines required: 98
-#Here is the number of lines required: 98
-../lem-in
-      98
-#Here is the number of lines required: 63
-#Here is the number of lines required: 63
-../lem-in
-      63
-#Here is the number of lines required: 63
-#Here is the number of lines required: 63
-../lem-in
-      63
-#Here is the number of lines required: 63
-#Here is the number of lines required: 63
-../lem-in
-      63
-#Here is the number of lines required: 83
-#Here is the number of lines required: 83
-../lem-in
-      81
-#Here is the number of lines required: 83
-#Here is the number of lines required: 83
-../lem-in
-      81
-#Here is the number of lines required: 83
-#Here is the number of lines required: 83
-../lem-in
-      81
-#Here is the number of lines required: 81
-#Here is the number of lines required: 81
-../lem-in
-      79
-#Here is the number of lines required: 81
-#Here is the number of lines required: 81
-../lem-in
-      79
-#Here is the number of lines required: 81
-#Here is the number of lines required: 81
-../lem-in
-      79
-#Here is the number of lines required: 81
-#Here is the number of lines required: 81
-../lem-in
-      79
-#Here is the number of lines required: 84
-#Here is the number of lines required: 84
-../lem-in
-      84
-#Here is the number of lines required: 84
-#Here is the number of lines required: 84
-../lem-in
-      84
-#Here is the number of lines required: 84
-#Here is the number of lines required: 84
-../lem-in
-      84
-#Here is the number of lines required: 84
-#Here is the number of lines required: 84
-../lem-in
-      84
-#Here is the number of lines required: 82
-#Here is the number of lines required: 82
-../lem-in
-      81
-#Here is the number of lines required: 82
-#Here is the number of lines required: 82
-../lem-in
-      81
-#Here is the number of lines required: 66
-#Here is the number of lines required: 66
-../lem-in
-      66
-#Here is the number of lines required: 66
-#Here is the number of lines required: 66
-../lem-in
-      66
-#Here is the number of lines required: 66
-#Here is the number of lines required: 66
-../lem-in
-      66
-#Here is the number of lines required: 66
-#Here is the number of lines required: 66
-../lem-in
-      66
-#Here is the number of lines required: 73
-#Here is the number of lines required: 73
-../lem-in
-      72
-#Here is the number of lines required: 73
-#Here is the number of lines required: 73
-../lem-in
-      72
-#Here is the number of lines required: 73
-#Here is the number of lines required: 73
-../lem-in
-      72
-#Here is the number of lines required: 77
-#Here is the number of lines required: 77
-../lem-in
-      77
-#Here is the number of lines required: 77
-#Here is the number of lines required: 77
-../lem-in
-      77
-#Here is the number of lines required: 77
-#Here is the number of lines required: 77
-../lem-in
-      77
-#Here is the number of lines required: 77
-#Here is the number of lines required: 77
-../lem-in
-      77
-#Here is the number of lines required: 77
-#Here is the number of lines required: 77
-../lem-in
-      77
-#Here is the number of lines required: 77
-#Here is the number of lines required: 77
-../lem-in
-      77
-#Here is the number of lines required: 82
-#Here is the number of lines required: 82
-../lem-in
-      82
-#Here is the number of lines required: 82
-#Here is the number of lines required: 82
-../lem-in
-      82
-#Here is the number of lines required: 68
-#Here is the number of lines required: 68
-../lem-in
-      68
-#Here is the number of lines required: 68
-#Here is the number of lines required: 68
-../lem-in
-      68
-#Here is the number of lines required: 74
-#Here is the number of lines required: 74
-../lem-in
-      73
-#Here is the number of lines required: 74
-#Here is the number of lines required: 74
-../lem-in
-      73
-#Here is the number of lines required: 80
-#Here is the number of lines required: 80
-../lem-in
-      79
-#Here is the number of lines required: 80
-#Here is the number of lines required: 80
-../lem-in
-      79
-#Here is the number of lines required: 80
-#Here is the number of lines required: 80
-../lem-in
-      79
-#Here is the number of lines required: 80
-#Here is the number of lines required: 80
-../lem-in
-      79
-#Here is the number of lines required: 91
-#Here is the number of lines required: 91
-../lem-in
-      91
-#Here is the number of lines required: 91
-#Here is the number of lines required: 91
-../lem-in
-      91
-#Here is the number of lines required: 81
-#Here is the number of lines required: 81
-../lem-in
-      85
-#Here is the number of lines required: 81
-#Here is the number of lines required: 81
-../lem-in
-      85
-#Here is the number of lines required: 79
-#Here is the number of lines required: 79
-../lem-in
-      80
-#Here is the number of lines required: 88
-#Here is the number of lines required: 88
-../lem-in
-      78
-#Here is the number of lines required: 88
-#Here is the number of lines required: 88
-../lem-in
-      78
-#Here is the number of lines required: 88
-#Here is the number of lines required: 88
-../lem-in
-      78
-#Here is the number of lines required: 88
-#Here is the number of lines required: 88
-../lem-in
-      78
-#Here is the number of lines required: 88
-#Here is the number of lines required: 88
-../lem-in
-      78
-#Here is the number of lines required: 88
-#Here is the number of lines required: 88
-../lem-in
-      78
-#Here is the number of lines required: 66
-#Here is the number of lines required: 66
-../lem-in
-      66
-#Here is the number of lines required: 66
-#Here is the number of lines required: 66
-../lem-in
-      66
-#Here is the number of lines required: 53
-#Here is the number of lines required: 53
-../lem-in
-      53
-#Here is the number of lines required: 53
-#Here is the number of lines required: 53
-../lem-in
-      53
-#Here is the number of lines required: 53
-#Here is the number of lines required: 53
-../lem-in
-      53
-#Here is the number of lines required: 53
-#Here is the number of lines required: 53
-../lem-in
-      53
-#Here is the number of lines required: 53
-#Here is the number of lines required: 53
-../lem-in
-      53
-#Here is the number of lines required: 53
-#Here is the number of lines required: 53
-../lem-in
-     135
-#Here is the number of lines required: 74
-#Here is the number of lines required: 74
-../lem-in
-      74
-#Here is the number of lines required: 74
-#Here is the number of lines required: 74
-../lem-in
-      74
-#Here is the number of lines required: 78
-#Here is the number of lines required: 78
-../lem-in
-      78
-#Here is the number of lines required: 78
-#Here is the number of lines required: 78
-../lem-in
-      78
-#Here is the number of lines required: 78
-#Here is the number of lines required: 78
-../lem-in
-      78
-#Here is the number of lines required: 98
-#Here is the number of lines required: 98
-lem-in
-      92
-#Here is the number of lines required: 88
-#Here is the number of lines required: 88
-lem-in
-      88
-#Here is the number of lines required: 100
-#Here is the number of lines required: 100
-lem-in
-      94
-#Here is the number of lines required: 100
-#Here is the number of lines required: 100
-lem-in
-      94
-#Here is the number of lines required: 100
-#Here is the number of lines required: 100
-lem-in
-      94
-#Here is the number of lines required: 95
-#Here is the number of lines required: 95
-lem-in
-      92
-#Here is the number of lines required: 70
-#Here is the number of lines required: 70
-lem-in
-      70
-#Here is the number of lines required: 72
-#Here is the number of lines required: 72
-lem-in
-      72
-#Here is the number of lines required: 75
-#Here is the number of lines required: 75
-lem-in
-      75
-#Here is the number of lines required: 75
-#Here is the number of lines required: 75
-lem-in
-      75
-#Here is the number of lines required: 75
-#Here is the number of lines required: 75
-lem-in
-      75
-#Here is the number of lines required: 81
-#Here is the number of lines required: 81
-lem-in
-      80
-#Here is the number of lines required: 65
-#Here is the number of lines required: 65
-lem-in
-      65
-#Here is the number of lines required: 75
-#Here is the number of lines required: 75
-lem-in
-      75
-#Here is the number of lines required: 92
-#Here is the number of lines required: 92
-lem-in
-      95
-#Here is the number of lines required: 89
-#Here is the number of lines required: 89
-lem-in
-      90
-#Here is the number of lines required: 89
-#Here is the number of lines required: 89
-lem-in
-      90
-#Here is the number of lines required: 84
-#Here is the number of lines required: 84
-lem-in
-      83
-#Here is the number of lines required: 59
-#Here is the number of lines required: 59
-lem-in
       62
-#Here is the number of lines required: 79
-#Here is the number of lines required: 79
-lem-in
+#Here is the number of lines required: 62
+#Here is the number of lines required: 62
+../lem-in
+      62
+#Here is the number of lines required: 71
+#Here is the number of lines required: 71
+../lem-in
+      71
+#Here is the number of lines required: 71
+#Here is the number of lines required: 71
+../lem-in
+      71
+#Here is the number of lines required: 77
+#Here is the number of lines required: 77
+../lem-in
       77
+#Here is the number of lines required: 85
+#Here is the number of lines required: 85
+../lem-in
+      83
+#Here is the number of lines required: 85
+#Here is the number of lines required: 85
+../lem-in
+      83
+#Here is the number of lines required: 83
+#Here is the number of lines required: 83
+../lem-in
+      83
+#Here is the number of lines required: 60
+#Here is the number of lines required: 60
+../lem-in
+      58
+#Here is the number of lines required: 60
+#Here is the number of lines required: 60
+../lem-in
+      58
+#Here is the number of lines required: 72
+#Here is the number of lines required: 72
+../lem-in
+      71
+#Here is the number of lines required: 68
+#Here is the number of lines required: 68
+../lem-in
+      68
+#Here is the number of lines required: 68
+#Here is the number of lines required: 68
+../lem-in
+      68
+#Here is the number of lines required: 68
+#Here is the number of lines required: 68
+../lem-in
+      68
+#Here is the number of lines required: 92
+#Here is the number of lines required: 92
+../lem-in
+      90
+#Here is the number of lines required: 93
+#Here is the number of lines required: 93
+../lem-in
+      94
+#Here is the number of lines required: 74
+#Here is the number of lines required: 74
+../lem-in
+      74
+#Here is the number of lines required: 72
+#Here is the number of lines required: 72
+../lem-in
+      72
+#Here is the number of lines required: 81
+#Here is the number of lines required: 81
+../lem-in
+      81
+#Here is the number of lines required: 81
+#Here is the number of lines required: 81
+../lem-in
+      81
