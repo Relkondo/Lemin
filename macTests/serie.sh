@@ -1,4 +1,4 @@
-for (( c=1; c<=20; c++ ))
+for c in {1..20}
 do
 ./generator --big-superposition > instructions.txt
 cat instructions.txt | grep -E '#Here' >> result.txt

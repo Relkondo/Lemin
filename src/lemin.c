@@ -3,9 +3,11 @@
 static int		lm_exit_lemin(t_farm *farm, char **line, int error)
 {
     char	*empty;
+	int		i;
 
     ft_strdel(line);
-    while (get_next_line_lm(0, &empty) > 0)
+	i = 0;
+    while (get_next_line_lm(0, &empty) > 0 && i++ < 10000)
         ft_strdel(&empty);
     ft_strdel(&empty);
     lm_del_farm(farm);

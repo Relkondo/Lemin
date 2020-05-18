@@ -110,7 +110,7 @@ $(NAME) : $(OBJS)
 		echo "$(GREEN)$@ is ready$(NC)"
 
 %.o : %.c includes/$(HEADER)
-	@clang -Iincludes -c $< -o $@
+	@clang -Wall -Wextra -Werror -fsanitize=address -Iincludes -c $< -o $@
 
 clean :
 	@/bin/rm -f $(OBJS)
