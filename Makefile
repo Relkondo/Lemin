@@ -20,7 +20,7 @@ O_PATH = obj/
 L_PATH = libft/
 
 LIBFT = $(addprefix $(S_PATH), $(L_PATH))
-FLAGS = -Wall -Wextra -Werror -fsanitize=address,undefined
+FLAGS = -Wall -Wextra -Werror
 CC = clang
 
 SRC:=$(addprefix $(S_PATH),$(addsuffix .c,$(BASE_SRC)))

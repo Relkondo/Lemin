@@ -11,7 +11,7 @@ static int		lm_exit_lemin(t_farm *farm, char **line, int error)
     lm_del_farm(farm);
     if (error == 1)
     {
-        write(2, "Error\n", 6);
+        write(2, "ERROR\n", 6);
         return (-1);
     }
     else

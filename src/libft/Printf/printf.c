@@ -21,6 +21,7 @@ int		ft_printf(char *format, ...)
 	p.len_buf = 0;
 	p.buf = ft_strnew(BUF_SIZE);
 	p.fd = 1;
+	p.padding = 0;
 	va_start(p.va, format);
 	while (*(p.format))
 	{
@@ -45,6 +46,7 @@ int		ft_dprintf(int fd, char *format, ...)
 	p.len_buf = 0;
 	p.buf = ft_strnew(BUF_SIZE);
 	p.fd = fd;
+	p.padding = 0;
 	va_start(p.va, format);
 	while (*(p.format))
 	{
