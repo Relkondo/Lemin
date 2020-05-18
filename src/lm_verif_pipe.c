@@ -9,7 +9,7 @@ char		**lm_verif_node2(char *node_line, int i, int space)
 			if (node_line[i] == ' ')
 			{
 				space++;
-				if (node_line[i] == '+' || node_line[i] == '-')
+				if (node_line[i + 1] == '+' || node_line[i + 1] == '-')
 					i++;
 				if (space > 2 || !ft_isdigit(node_line[i + 1]))
 					return (NULL);

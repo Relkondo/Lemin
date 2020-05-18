@@ -60,7 +60,7 @@ int		ft_atoi_lm(const char *str)
 	{
 		if (result > 214748364)
 			return (0);
-		if (result == 214748364 && ((sign == 1 && str[i] == 7) || str[i] > 7))
+		if (result == 214748364 && ((sign == 1 && str[i] == '8') || str[i] == '9'))
 			return (0);
 		result = 10 * result + str[i++] - '0';
 	}
