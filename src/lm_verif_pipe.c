@@ -1,25 +1,5 @@
 #include "lemin.h"
 
-static char	**lm_verif_node3(char **split_node)
-{
-	int		i;
-	int		sign;
-
-	if (!split_node)
-		return (NULL);
-	i = 1;
-	while (i < 3)
-	{
-		sign = 0;
-		if (split_node[i][0] == '-' || split_node[i][0] == '+')
-			sign = 1;
-		if (ft_strlen(split_node[i]) - sign > 10)
-			return (NULL);
-		i++;
-	}
-	return (split_node);
-}
-
 char		**lm_verif_node2(char *node_line, int i, int space)
 {
 	while (node_line[i])
@@ -41,7 +21,7 @@ char		**lm_verif_node2(char *node_line, int i, int space)
 	}
 	if (space != 2)
 		return (NULL);
-	return (lm_verif_node3(ft_strsplit(node_line, ' ')));
+	return (ft_strsplit(node_line, ' '));
 }
 
 char		**lm_verif_node1(char *node_line)

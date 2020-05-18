@@ -33,9 +33,9 @@ static int		is_not_zero(char *numb)
 	while (*numb)
 	{
 		if (*(numb)++ != '0')
-			return (0);
+			return (1);
 	}
-	return (1);
+	return (0);
 }		
 
 t_node			*lm_generate_nodes(t_node *end, char **line, int entry)
@@ -50,13 +50,12 @@ t_node			*lm_generate_nodes(t_node *end, char **line, int entry)
 	if (!(new->pseudo = ft_strdup(mem[0])))
 		return (lm_clean_mem(mem, new, NULL));
 	init_node(new, entry);
-	if ((new->x = ft_atoi(mem[1])) > INT_MAX || new->x < INT_MIN ||
+	if ((new->x = ft_atoi_lm(mem[1])) > INT_MAX || new->x < INT_MIN ||
 					(new->x == 0 && is_not_zero(mem[1])))
 		return (lm_clean_mem(mem, new, NULL));
-	if ((new->y = ft_atoi(mem[2])) > INT_MAX || new->y < INT_MIN ||
+	if ((new->y = ft_atoi_lm(mem[2])) > INT_MAX || new->y < INT_MIN ||
 					(new->y == 0 && is_not_zero(mem[2])))
 		return (lm_clean_mem(mem, new, NULL));
-	// ft_printf("\nmem3 : %s, x : %d, y : %d, int min : %d \n", mem[1], new->x, new->y, INT_MIN);
 	if (end)
 		end->next = new;
 	return (lm_clean_mem(mem, NULL, new));
