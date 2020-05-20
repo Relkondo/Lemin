@@ -4,8 +4,6 @@ if [ -f colors.sh ]; then
 	. colors.sh
 fi
 
-LEM_IN_EXEC=$1
-
 MAP_PATH=maps/invalid
 INPUT_DATA=data_error.txt
 
@@ -33,7 +31,12 @@ run_test()
 
 	printf "%-50s" "$name"
 	if [ -f "${MAP_PATH}/${map}" ];then
-		valgrind -q --leak-check=full --error-exitcode=42 --suppressions=false_pos_valgrind.supp ${LEM_IN_EXEC} < "${MAP_PATH}/${map}" > /dev/null 2> ${TEST_TMP}
+		if [ "$VALGRIND" -eq 1 ];then
+			printf "with valgrind :      "
+			valgrind -q --leak-check=full --error-exitcode=42 --suppressions=false_pos_valgrind.supp ${LEM_IN_EXEC} < "${MAP_PATH}/${map}" > /dev/null 2> ${TEST_TMP}
+		else
+			${LEM_IN_EXEC} < "${MAP_PATH}/${map}" > /dev/null 2> ${TEST_TMP}
+		fi
 		local output=`cat -e ${TEST_TMP}`
 		if [ "${output:0:5}" = "ERROR" ]; then
 			print_ok "Good!"
@@ -57,18 +60,28 @@ run_all_tests()
 
 print_usage_and_exit()
 {
-	printf "%s\n" "Usage: ./check_invalid_maps.sh exec"
+	printf "%s\n" "Usage: ./check_invalid.sh exec"
+	printf "%s\n" "Or Usage: ./check_invalid.sh -v exec"
 	printf "%s\n" "  -exec   Path to executable"
 	exit
 }
 
-if [ $# -ne 1 ];then
+if [ $# -ne 1 ] && [ $# -ne 2 ] ;then
 	print_usage_and_exit
 	exit
 fi
 
-if [ ! -f $1 ];then
-	printf "%s\n" "Executable ($1) not found"
+
+if [ $# -eq 2 ] && [ "$1" == "-v" ];then
+	LEM_IN_EXEC=$2
+	VALGRIND=1
+else
+	LEM_IN_EXEC=$1
+	VALGRIND=0
+fi
+
+if [ ! -f $LEM_IN_EXEC ];then
+	printf "%s\n" "Executable ($LEM_IN_EXEC) not found"
 	exit
 fi
 

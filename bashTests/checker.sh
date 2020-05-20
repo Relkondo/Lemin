@@ -338,7 +338,7 @@ do
 done
 shift $((OPTIND - 1))
 
-if [ $# -ne 2 ]; then
+if [ $# -lt 2 ]; then
    print_usage_and_exit
 fi
 
@@ -347,6 +347,7 @@ check_valid_file $2 || exit
 
 EXEC="`add_prefix_if_current_dir $1`"
 MAP="$2"
+OPTION="$3"
 
 if [ $CLEAN_FIRST -eq 1 ]; then
 	clean_dir $DIRS
@@ -354,7 +355,13 @@ fi
 initialize_dir $DIRS
 
 if [ $DEBUG -eq 0 ]; then
-	valgrind -q --leak-check=full --error-exitcode=42 --suppressions=false_pos_valgrind.supp $EXEC < $MAP > $OUTPUT
+	if [ "$OPTION" == "valgrind" ]; then
+		printf "valgrind -q --leak-check=full --error-exitcode=42 --suppressions=false_pos_valgrind.supp $EXEC < $MAP > $OUTPUT\n"
+		valgrind -q --leak-check=full --error-exitcode=42 --suppressions=false_pos_valgrind.supp $EXEC < $MAP > $OUTPUT
+	else
+		printf "$EXEC < $MAP > $OUTPUT\n"
+		$EXEC < $MAP > $OUTPUT
+	fi
 	if [ $? -eq 0 ]; then
 		run_main
 	else

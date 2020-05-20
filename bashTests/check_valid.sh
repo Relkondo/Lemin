@@ -4,10 +4,9 @@ if [ -f colors.sh ]; then
 	. colors.sh
 fi
 
-LEM_IN_EXEC=$1
-
 MAP_PATH=maps/valid
 INPUT_DATA=data_valid.txt
+VALGRIND=""
 
 print_ok()
 {
@@ -32,7 +31,7 @@ run_test()
 	printf "%-50s" "$map"
 	printf "\n"
 	if [ -f "${MAP_PATH}/${map}" ];then
-		bash checker.sh ${LEM_IN_EXEC} ${MAP_PATH}/${map}
+		bash checker.sh ${LEM_IN_EXEC} ${MAP_PATH}/${map} ${VALGRIND}
 	fi
 	printf "\n"
 }
@@ -47,18 +46,26 @@ run_all_tests()
 
 print_usage_and_exit()
 {
-	printf "%s\n" "Usage: ./check_invalid_maps.sh exec"
-	printf "%s\n" "  -exec   Path to executable"
+	printf "%s\n" "Usage: ./check_valid.sh exec"
+	printf "%s\n" "Or Usage: ./check_valid.sh -v exec"
+	printf "%s\n" "  -exec   Path to executable, -v with valgrind"
 	exit
 }
 
-if [ $# -ne 1 ];then
+if [ $# -ne 1 ] && [ $# -ne 2 ] ;then
 	print_usage_and_exit
 	exit
 fi
 
-if [ ! -f $1 ];then
-	printf "%s\n" "Executable ($1) not found"
+if [ $# -eq 2 ] && [ "$1" == "-v" ];then
+	LEM_IN_EXEC=$2
+	VALGRIND="valgrind"
+else
+	LEM_IN_EXEC=$1
+fi
+
+if [ ! -f ${LEM_IN_EXEC} ];then
+	printf "%s\n" "Executable (${LEM_IN_EXEC}) not found"
 	exit
 fi
 

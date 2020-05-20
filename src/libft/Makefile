@@ -109,6 +109,14 @@ $(NAME) : $(OBJS)
 		ranlib $(NAME)
 		echo "$(GREEN)$@ is ready$(NC)"
 
+val : 
+	@clang -Wall -Wextra -Werror -Iincludes -c $(SRCS)
+	@mv parse.o printf.o float_print.o convert_speci.o int_print.o size.o Printf/
+	@ar -rc $(NAME) $(OBJS)
+	@ranlib $(NAME)
+	@echo "$(GREEN)$@ is ready$(NC)"
+	
+
 %.o : %.c includes/$(HEADER)
 	@clang -Wall -Wextra -Werror -fsanitize=address -Iincludes -c $< -o $@
 
