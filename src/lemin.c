@@ -34,7 +34,6 @@ static int	lm_exit_lemin(t_farm *farm, char **line, int error)
 	}
 }
 
-
 int			lm_get_nb_ants(char **line)
 {
 	long		numb;

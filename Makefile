@@ -47,19 +47,21 @@ check_invalid: $(NAME)
 	@echo "$(YELLOW) CHECKING INVALID MAPS WITH FSANITIZER$(NC)" 
 	cd bashTests;bash check_invalid.sh ../lem-in; cd ..
 
-check_valgrind: check_invalid_valgrind check_valid_valgrind
+check_valgrind: check_invalid_valgrind check_valid_valgrind clean_valgrind
 
 check_valid_valgrind: val
 	@echo "$(YELLOW) CHECKING VALID MAPS WITH VALGRIND$(NC)" 
 	cd bashTests;bash check_valid.sh -v ../lem-in;cd ..
-	@$(RM) -rf $(O_PATH_V)
-	@$(RM) -rf $(LIBFT)libft.a
 	
 check_invalid_valgrind: val
 	@echo "$(YELLOW) CHECKING INVALID MAPS WITH VALGRIND$(NC)" 
 	cd bashTests;bash check_invalid.sh -v ../lem-in; cd ..
+
+clean_valgrind:
 	@$(RM) -rf $(O_PATH_V)
-	@$(RM) -rf $(LIBFT)libft.a
+	@make -C $(LIBFT) fclean
+	@$(RM) -rf lem-in
+
 
 val: $(LIBFT)libft.a $(OBJ_V)
 	@echo "$(GREEN)compiling lem-in... without fsanitizer to avoid conflicts with valgrind$(NC)" 
