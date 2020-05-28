@@ -31,3 +31,5 @@ invalid_command 2;map_invalidcommand2
 loop without way;map_loop_no_way
 overflow;map_overflow
 too much spaces;map_bad_format_space
+room name duplicated;room_name_duplicated
+room coord duplicated;room_coord_duplicated

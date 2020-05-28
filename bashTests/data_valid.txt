@@ -28,5 +28,3 @@ zob;map_33
 zob;map_39
 zob;map_40
 zob;map_big
-room name duplicated;room_name_duplicated
-room coord duplicated;room_coord_duplicated

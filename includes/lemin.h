@@ -6,7 +6,7 @@
 /*   By: scoron <scoron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/18 05:55:09 by scoron            #+#    #+#             */
-/*   Updated: 2020/05/28 01:14:08 by scoron           ###   ########.fr       */
+/*   Updated: 2020/05/28 02:49:32 by scoron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,8 @@ typedef struct		s_farm
 }					t_farm;
 
 t_farm				*lm_generate_farm(void);
-t_node				*lm_generate_nodes(t_node *end, char **line, int entry);
+t_node				*lm_generate_nodes(t_node *end, char **line,
+									int entry, t_node *start);
 int					lm_parsing_pipes(t_farm *farm, char *line);
 unsigned int		lm_hashing(char *name, int size);
 int					lm_nodemap(t_farm *farm, t_node *start);
@@ -79,6 +80,9 @@ void				lm_recalc_costs(t_node ***ways);
 void				lm_move(t_farm *farm, t_node ***ways, t_node **nodes);
 int					lm_solve_one_step(char *end, int ants);
 int					lm_is_not_zero(char *numb);
+int					lm_verif_dupl(t_node *new, t_node *current);
+t_node				*lm_parse_nodes(char **line, t_node *end,
+									int *res, t_node *start);
 int					lm_del(char **line, t_node *current_node,
 											int res, int check);
 #endif

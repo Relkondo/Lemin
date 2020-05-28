@@ -6,7 +6,7 @@
 /*   By: scoron <scoron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/18 05:38:01 by scoron            #+#    #+#             */
-/*   Updated: 2020/05/18 05:47:25 by scoron           ###   ########.fr       */
+/*   Updated: 2020/05/28 02:53:41 by scoron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,18 @@ int				lm_use_way(t_node **nodes)
 			pipe->reverse->weight = -1;
 		node_id = prev->id;
 		prev = lm_find_prev(nodes, prev);
+	}
+	return (1);
+}
+
+int				lm_verif_dupl(t_node *new, t_node *current)
+{
+	while (current)
+	{
+		if (!(ft_strcmp(current->pseudo, new->pseudo)) ||
+			(current->x == new->x && current->y == new->y))
+			return (0);
+		current = current->next;
 	}
 	return (1);
 }

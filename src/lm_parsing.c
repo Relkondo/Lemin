@@ -6,13 +6,13 @@
 /*   By: scoron <scoron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/18 05:37:50 by scoron            #+#    #+#             */
-/*   Updated: 2020/05/18 06:31:41 by scoron           ###   ########.fr       */
+/*   Updated: 2020/05/28 02:50:39 by scoron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lemin.h"
 
-static int		lm_next_line(char **line)
+static int	lm_next_line(char **line)
 {
 	int check;
 
@@ -31,24 +31,24 @@ static int		lm_next_line(char **line)
 	return (check);
 }
 
-static t_node	*lm_parse_nodes(char **line, t_node *end, int *res)
+t_node		*lm_parse_nodes(char **line, t_node *end, int *res, t_node *start)
 {
 	static int	check = 1;
 
 	if (*line[0] != '#')
-		return (lm_generate_nodes(end, line, 0));
+		return (lm_generate_nodes(end, line, 0, start));
 	if (!(ft_strcmp(*line, "##start")) && check > 0 && (check *= -1))
 	{
 		if (lm_next_line(line) != 1)
 			return (NULL);
-		if (!(end = lm_generate_nodes(end, line, 1)))
+		if (!(end = lm_generate_nodes(end, line, 1, start)))
 			return (NULL);
 	}
 	else if (!(ft_strcmp(*line, "##end")) && (check % 2) != 0 && (check *= 2))
 	{
 		if (lm_next_line(line) != 1)
 			return (NULL);
-		if (!(end = lm_generate_nodes(end, line, -1)))
+		if (!(end = lm_generate_nodes(end, line, -1, start)))
 			return (NULL);
 	}
 	else
@@ -56,7 +56,7 @@ static t_node	*lm_parse_nodes(char **line, t_node *end, int *res)
 	return ((*res == 0) ? NULL : end);
 }
 
-static int		lm_get_nodes(t_farm *farm, char **line)
+static int	lm_get_nodes(t_farm *farm, char **line)
 {
 	t_node	*start;
 	t_node	*end;
@@ -72,7 +72,7 @@ static int		lm_get_nodes(t_farm *farm, char **line)
 		if (!(ft_strcmp(*line, "##start")) || !(ft_strcmp(*line, "##end"))
 													|| *line[0] != '#')
 		{
-			if (!(end = lm_parse_nodes(line, end, &res)))
+			if (!(end = lm_parse_nodes(line, end, &res, start)))
 				return (lm_del(line, start, res, 1));
 			(start == NULL) ? start = end : start;
 			farm->size++;
@@ -85,7 +85,7 @@ static int		lm_get_nodes(t_farm *farm, char **line)
 	return (lm_nodemap(farm, start));
 }
 
-static int		lm_pipeline(t_farm *farm, char *line)
+static int	lm_pipeline(t_farm *farm, char *line)
 {
 	int		res;
 
@@ -112,7 +112,7 @@ static int		lm_pipeline(t_farm *farm, char *line)
 	return (1);
 }
 
-int				lm_start_parsing(t_farm *farm)
+int			lm_start_parsing(t_farm *farm)
 {
 	t_node		**nodes;
 	char		*line;

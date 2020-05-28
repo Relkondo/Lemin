@@ -6,7 +6,7 @@
 /*   By: scoron <scoron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/18 05:37:53 by scoron            #+#    #+#             */
-/*   Updated: 2020/05/28 01:15:08 by scoron           ###   ########.fr       */
+/*   Updated: 2020/05/28 02:52:47 by scoron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,8 @@ int				lm_is_not_zero(char *numb)
 	return (0);
 }
 
-t_node			*lm_generate_nodes(t_node *end, char **line, int entry)
+t_node			*lm_generate_nodes(t_node *end, char **line,
+									int entry, t_node *start)
 {
 	t_node		*new;
 	char		**mem;
@@ -68,6 +69,8 @@ t_node			*lm_generate_nodes(t_node *end, char **line, int entry)
 	if ((new->y = ft_atoi_lm(mem[2])) > INT_MAX || new->y < INT_MIN ||
 			(new->y == 0 && lm_is_not_zero(mem[2])))
 		return (lm_clean_mem(mem, new, NULL));
+	if (!(lm_verif_dupl(new, start)))
+		return (NULL);
 	if (end)
 		end->next = new;
 	return (lm_clean_mem(mem, NULL, new));
