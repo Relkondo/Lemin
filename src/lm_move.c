@@ -27,13 +27,13 @@ static void		lm_first_moves(t_farm *farm, t_node ***ways, int i, int lines)
 {
 	static int	id = 1;
 	t_node		*orig;
-	int			max;
+	long		max;
 
-	max = farm->steps;
+	max = (long)farm->steps;
 	orig = farm->nodes[FIRST];
-	if (farm->steps > (double)(int)farm->steps)
+	if (farm->steps > (double)(long)farm->steps)
 		lines--;
-	if (ways[i][0]->cost + lines < max && id <= orig->ants)
+	if ((long)ways[i][0]->cost + (long)lines < max && id <= orig->ants)
 	{
 		ft_printf("L%d-%s ", id, ways[i][0]->pseudo);
 		ways[i][0]->ants = id++;

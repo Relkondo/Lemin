@@ -6,17 +6,17 @@
 /*   By: scoron <scoron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/18 05:37:58 by scoron            #+#    #+#             */
-/*   Updated: 2020/05/18 05:52:49 by scoron           ###   ########.fr       */
+/*   Updated: 2020/05/28 01:14:28 by scoron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lemin.h"
 
-static int	lm_total_len_ways(t_node ***ways)
+static long	lm_total_len_ways(t_node ***ways)
 {
 	int		i;
 	int		j;
-	int		len;
+	long	len;
 
 	len = 0;
 	i = 0;
@@ -36,9 +36,10 @@ static int	lm_total_len_ways(t_node ***ways)
 double		lm_max_steps(t_farm *farm, t_node ***ways, int nb_ways)
 {
 	double		max;
-	int			tmp;
+	long		tmp;
 
-	tmp = farm->nb_ants + lm_total_len_ways(ways);
+	tmp = (long)farm->nb_ants;
+	tmp = tmp + lm_total_len_ways(ways);
 	max = ((double)tmp / (double)nb_ways) - (double)1;
 	return (max);
 }

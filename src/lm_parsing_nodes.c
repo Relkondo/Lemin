@@ -6,7 +6,7 @@
 /*   By: scoron <scoron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/18 05:37:53 by scoron            #+#    #+#             */
-/*   Updated: 2020/05/18 05:45:11 by scoron           ###   ########.fr       */
+/*   Updated: 2020/05/28 01:15:08 by scoron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ static void		init_node(t_node *new, int entry)
 	new->next = NULL;
 }
 
-static int		is_not_zero(char *numb)
+int				lm_is_not_zero(char *numb)
 {
 	while (*numb)
 	{
@@ -63,10 +63,10 @@ t_node			*lm_generate_nodes(t_node *end, char **line, int entry)
 		return (lm_clean_mem(mem, new, NULL));
 	init_node(new, entry);
 	if ((new->x = ft_atoi_lm(mem[1])) > INT_MAX || new->x < INT_MIN ||
-			(new->x == 0 && is_not_zero(mem[1])))
+			(new->x == 0 && lm_is_not_zero(mem[1])))
 		return (lm_clean_mem(mem, new, NULL));
 	if ((new->y = ft_atoi_lm(mem[2])) > INT_MAX || new->y < INT_MIN ||
-			(new->y == 0 && is_not_zero(mem[2])))
+			(new->y == 0 && lm_is_not_zero(mem[2])))
 		return (lm_clean_mem(mem, new, NULL));
 	if (end)
 		end->next = new;

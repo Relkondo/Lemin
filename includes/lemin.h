@@ -6,7 +6,7 @@
 /*   By: scoron <scoron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/18 05:55:09 by scoron            #+#    #+#             */
-/*   Updated: 2020/05/18 05:56:12 by scoron           ###   ########.fr       */
+/*   Updated: 2020/05/28 01:14:08 by scoron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,7 @@ int					lm_duplic_nodes(t_node ***ways);
 void				lm_recalc_costs(t_node ***ways);
 void				lm_move(t_farm *farm, t_node ***ways, t_node **nodes);
 int					lm_solve_one_step(char *end, int ants);
+int					lm_is_not_zero(char *numb);
 int					lm_del(char **line, t_node *current_node,
 											int res, int check);
 #endif
