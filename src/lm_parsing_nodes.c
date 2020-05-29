@@ -6,7 +6,7 @@
 /*   By: scoron <scoron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/18 05:37:53 by scoron            #+#    #+#             */
-/*   Updated: 2020/05/28 02:52:47 by scoron           ###   ########.fr       */
+/*   Updated: 2020/05/29 00:45:28 by scoron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ t_node			*lm_generate_nodes(t_node *end, char **line,
 			(new->y == 0 && lm_is_not_zero(mem[2])))
 		return (lm_clean_mem(mem, new, NULL));
 	if (!(lm_verif_dupl(new, start)))
-		return (NULL);
+		return (lm_clean_mem(mem, new, NULL));
 	if (end)
 		end->next = new;
 	return (lm_clean_mem(mem, NULL, new));
