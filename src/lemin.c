@@ -6,11 +6,13 @@
 /*   By: scoron <scoron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/18 05:36:36 by scoron            #+#    #+#             */
-/*   Updated: 2020/05/18 06:32:55 by scoron           ###   ########.fr       */
+/*   Updated: 2020/05/29 00:01:12 by scoron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lemin.h"
+
+int			g_v;
 
 static int	lm_exit_lemin(t_farm *farm, char **line, int error)
 {
@@ -19,7 +21,7 @@ static int	lm_exit_lemin(t_farm *farm, char **line, int error)
 
 	ft_strdel(line);
 	i = 0;
-	while (get_next_line_lm(0, &empty) > 0 && i++ < 10000)
+	while (lm_gnl(0, &empty) > 0 && i++ < 10000)
 		ft_strdel(&empty);
 	ft_strdel(&empty);
 	lm_del_farm(farm);
@@ -43,7 +45,7 @@ int			lm_get_nb_ants(char **line)
 			ft_strcmp(*line, "##end"))
 	{
 		ft_strdel(line);
-		if (get_next_line_lm(0, line) != 1)
+		if (lm_gnl(0, line) != 1)
 			return (-1);
 	}
 	li = *line;
@@ -78,15 +80,17 @@ t_farm		*lm_generate_farm(void)
 	return (farm);
 }
 
-int			main(void)
+int			main(int ac, char **av)
 {
 	char		*line;
 	t_farm		*farm;
 	int			check;
 
+	if (!(lm_parse_bonus(ac, av)))
+		return (-1);
 	if (!(farm = lm_generate_farm()))
 		return (-1);
-	if (get_next_line_lm(0, &line) != 1)
+	if (lm_gnl(0, &line) != 1)
 		return (lm_exit_lemin(farm, &line, 1));
 	if ((farm->nb_ants = lm_get_nb_ants(&line)) <= 0)
 		return (lm_exit_lemin(farm, &line, 1));

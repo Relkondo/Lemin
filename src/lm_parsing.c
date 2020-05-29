@@ -17,14 +17,14 @@ static int	lm_next_line(char **line)
 	int check;
 
 	ft_strdel(line);
-	if ((check = get_next_line_lm(0, line)) != 1)
+	if ((check = lm_gnl(0, line)) != 1)
 		return (check);
 	while (*line[0] == '#')
 	{
 		if (!(ft_strcmp(*line, "##start")) || !(ft_strcmp(*line, "##end")))
 			return (0);
 		ft_strdel(line);
-		check = get_next_line_lm(0, line);
+		check = lm_gnl(0, line);
 		if (check <= 0)
 			return (check);
 	}
@@ -64,7 +64,7 @@ static int	lm_get_nodes(t_farm *farm, char **line)
 
 	start = NULL;
 	end = NULL;
-	while ((res = (get_next_line_lm(0, line) == 1)) && (ft_strchr(*line, ' ')
+	while ((res = (lm_gnl(0, line) == 1)) && (ft_strchr(*line, ' ')
 				|| *line[0] == '#'))
 	{
 		if (*line[0] == 'L')
@@ -93,7 +93,7 @@ static int	lm_pipeline(t_farm *farm, char *line)
 	ft_strdel(&line);
 	if (res <= 0)
 		return (-1);
-	while ((res = (get_next_line_lm(0, &line) == 1)) && line[0] != '\0')
+	while ((res = (lm_gnl(0, &line) == 1)) && line[0] != '\0')
 	{
 		if (line[0] != '#' || !(ft_strcmp(line, "##start"))
 							|| !(ft_strcmp(line, "##end")))
