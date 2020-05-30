@@ -6,11 +6,13 @@
 /*   By: scoron <scoron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/18 05:37:50 by scoron            #+#    #+#             */
-/*   Updated: 2020/05/28 02:50:39 by scoron           ###   ########.fr       */
+/*   Updated: 2020/05/30 16:06:06 by scoron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lemin.h"
+
+extern int	g_v;
 
 static int	lm_next_line(char **line)
 {
@@ -132,6 +134,7 @@ int			lm_start_parsing(t_farm *farm)
 	free(farm->nodes);
 	farm->nodes = nodes;
 	farm->size /= 2;
-	ft_printf("\n");
+	if (g_v != 1)
+		ft_printf("\n");
 	return (lm_init_algo(farm, nodes));
 }
